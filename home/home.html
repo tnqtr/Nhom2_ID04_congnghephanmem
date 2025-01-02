@@ -17,6 +17,20 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <h4>  Phan mem ban hang trang suc tai cua hang </h4>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+        </form>
         <script src="" async defer></script>
     </body>
 </html>
