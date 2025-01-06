@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class JsHoadonConfig(AppConfig):
+class JsManageConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'JS_hoaDon'
+    name = 'JS_Manage'
