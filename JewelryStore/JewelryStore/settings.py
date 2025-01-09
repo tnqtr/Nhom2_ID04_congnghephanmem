@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'JewelryStore.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'mysql',
+		'NAME': 'storeDB',
 		'USER': 'root',
-		'PASSWORD': 'root',
+		'PASSWORD': 'nhom2password',
 		'HOST':'127.0.0.1',
 		'PORT':'3306',
 	}

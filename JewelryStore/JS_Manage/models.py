@@ -14,3 +14,8 @@ class nhanVien (models.Model):
     hoTen = models.CharField(max_length=100)
     def __str__(self):
         return f"{self.hoTen} {self.maNV}"
+    
+class ct_hoadon(models.Model):
+    # hoadon = models.ForeignKey(hoaDon)
+    soluong = models.IntegerField()
+    dongia = models.FloatField()
