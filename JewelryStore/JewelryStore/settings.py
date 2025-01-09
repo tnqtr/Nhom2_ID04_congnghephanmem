@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'JS_Manage',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'JewelryStore.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,9 +78,9 @@ WSGI_APPLICATION = 'JewelryStore.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'store_DB',
+		'NAME': 'mysql',
 		'USER': 'root',
-		'PASSWORD': 'my-secret-pw',
+		'PASSWORD': 'root',
 		'HOST':'127.0.0.1',
 		'PORT':'3306',
 	}
