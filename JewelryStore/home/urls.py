@@ -23,7 +23,11 @@ urlpatterns = [
     path("examples/login-v2.html", views.login_v2, name="login-v2"),
     path("examples/register-v2.html", views.register_v2, name="register-v2"),
     path("docs/components/main-header.html", views.main_header, name="main-header"),
+<<<<<<< HEAD
     path("docs/introduction.html", views.introduction, name="introduction"),
     path("docs/layout.html", views.layout, name="layout"),
     path("docs/color-mode.html", views.color_mode, name="color-mode"),
+=======
+    path("docs/components/main-sidebar.html", views.main_sidebar, name="main-sidebar"),
+>>>>>>> bdcbfcf97544ff990fd6d96ca7e90fa4cd1f1029
 ]
