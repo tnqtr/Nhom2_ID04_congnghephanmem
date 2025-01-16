@@ -29,3 +29,5 @@ def forms(request):
     return render(request, 'home/pages/forms/general.html')
 def main_header(request):
     return render(request, 'home/pages/docs/components/main-header.html')
+def main_sidebar(request):
+    return render(request, 'home/pages/docs/components/main-sidebar.html')

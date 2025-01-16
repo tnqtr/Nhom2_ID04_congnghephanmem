@@ -18,4 +18,5 @@ urlpatterns = [
     path("generate/theme.html", views.theme, name="theme"),
     path("forms/general.html", views.forms, name="forms"),
     path("docs/components/main-header.html", views.main_header, name="main-header"),
+    path("docs/components/main-sidebar.html", views.main_sidebar, name="main-sidebar"),
 ]
