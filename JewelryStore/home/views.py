@@ -27,6 +27,16 @@ def theme(request):
     return render(request, 'home/pages/generate/theme.html')
 def forms(request):
     return render(request, 'home/pages/forms/general.html')
+def lockscreen(request):
+    return render(request, 'home/pages/examples/lockscreen.html')
+def login(request):
+    return render(request, 'home/pages/examples/login.html')
+def register(request):
+    return render(request, 'home/pages/examples/register.html')
+def login_v2(request):
+    return render(request, 'home/pages/examples/login-v2.html')
+def register_v2(request):
+    return render(request, 'home/pages/examples/register-v2.html')
 def main_header(request):
     return render(request, 'home/pages/docs/components/main-header.html')
 def main_sidebar(request):

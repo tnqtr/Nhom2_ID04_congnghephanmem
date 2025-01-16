@@ -1,3 +1,4 @@
+{%load static%}
 <!doctype html>
 <html lang="en">
   <!--begin::Head-->
@@ -42,7 +43,7 @@
     />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="../../../dist/css/adminlte.css" />
+    <link rel="stylesheet" href="{%static 'home/dist/css/adminlte.css' %}" />
     <!--end::Required Plugin(AdminLTE)-->
   </head>
   <!--end::Head-->
@@ -50,12 +51,12 @@
   <body class="lockscreen bg-body-secondary">
     <div class="lockscreen-wrapper">
       <div class="lockscreen-logo">
-        <a href="../index2.html"><b>Admin</b>LTE</a>
+        <a href="{%static 'home/index2.html' %}"><b>Admin</b>LTE</a>
       </div>
       <div class="lockscreen-name">John Doe</div>
       <div class="lockscreen-item">
         <div class="lockscreen-image">
-          <img src="../../../dist/assets/img/user1-128x128.jpg" alt="User Image" />
+          <img src="{%static 'home/dist/assets/img/user1-128x128.jpg' %}" alt="User Image" />
         </div>
         <form class="lockscreen-credentials">
           <div class="input-group">
@@ -129,4 +130,3 @@
     <!--end::OverlayScrollbars Configure-->
   </body>
   <!--end::Body-->
-</html>
