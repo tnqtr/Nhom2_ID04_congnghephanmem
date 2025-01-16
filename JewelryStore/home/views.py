@@ -27,3 +27,5 @@ def theme(request):
     return render(request, 'home/pages/generate/theme.html')
 def forms(request):
     return render(request, 'home/pages/forms/general.html')
+def main_header(request):
+    return render(request, 'home/pages/docs/components/main-header.html')

@@ -17,4 +17,5 @@ urlpatterns = [
     path("tables/simple.html", views.simple, name="simple"),
     path("generate/theme.html", views.theme, name="theme"),
     path("forms/general.html", views.forms, name="forms"),
+    path("docs/components/main-header.html", views.main_header, name="main-header"),
 ]
