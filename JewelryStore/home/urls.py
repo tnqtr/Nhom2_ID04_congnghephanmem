@@ -17,4 +17,9 @@ urlpatterns = [
     path("tables/simple.html", views.simple, name="simple"),
     path("generate/theme.html", views.theme, name="theme"),
     path("forms/general.html", views.forms, name="forms"),
+    path("examples/lockscreen.html", views.lockscreen, name="lockscreen"),
+    path("examples/login.html", views.login, name="login"),
+    path("examples/register.html", views.register, name="register"),
+    path("examples/login-v2.html", views.login_v2, name="login-v2"),
+    path("examples/register-v2.html", views.register_v2, name="register-v2"),
 ]
