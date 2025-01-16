@@ -27,4 +27,9 @@ urlpatterns = [
     path("docs/layout.html", views.layout, name="layout"),
     path("docs/color-mode.html", views.color_mode, name="color-mode"),
     path("docs/components/main-sidebar.html", views.main_sidebar, name="main-sidebar"),
+    path("docs/browser-support.html", views.browser_support, name="browser-support"),
+    path("docs/javascript/treeview.html", views.treeview, name="treeview"),
+    path("docs/how-to-contribute.html", views.how_to_contribute, name="how-to-contribute"),
+    path("docs/faq.html", views.faq, name="faq"),
+    path("docs/license.html", views.license, name="license"),
 ]

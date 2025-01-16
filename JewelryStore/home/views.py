@@ -47,3 +47,13 @@ def color_mode(request):
     return render(request, 'home/pages/docs/color-mode.html')
 def main_sidebar(request):
     return render(request, 'home/pages/docs/components/main-sidebar.html')
+def browser_support(request):
+    return render(request, 'home/pages/docs/browser-support.html')
+def treeview(request):
+    return render(request, 'home/pages/docs/javascript/treeview.html')
+def how_to_contribute(request):
+    return render(request, 'home/pages/docs/how-to-contribute.html')
+def faq(request):
+    return render(request, 'home/pages/docs/faq.html')
+def license(request):
+    return render(request, 'home/pages/docs/license.html')
