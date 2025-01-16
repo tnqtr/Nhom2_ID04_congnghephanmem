@@ -37,3 +37,5 @@ def login_v2(request):
     return render(request, 'home/pages/examples/login-v2.html')
 def register_v2(request):
     return render(request, 'home/pages/examples/register-v2.html')
+def main_header(request):
+    return render(request, 'home/pages/docs/components/main-header.html')

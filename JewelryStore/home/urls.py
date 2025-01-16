@@ -22,4 +22,5 @@ urlpatterns = [
     path("examples/register.html", views.register, name="register"),
     path("examples/login-v2.html", views.login_v2, name="login-v2"),
     path("examples/register-v2.html", views.register_v2, name="register-v2"),
+    path("docs/components/main-header.html", views.main_header, name="main-header"),
 ]
