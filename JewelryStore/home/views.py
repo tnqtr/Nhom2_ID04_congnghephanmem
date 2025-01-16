@@ -39,14 +39,11 @@ def register_v2(request):
     return render(request, 'home/pages/examples/register-v2.html')
 def main_header(request):
     return render(request, 'home/pages/docs/components/main-header.html')
-<<<<<<< HEAD
 def introduction(request):
     return render(request, 'home/pages/docs/introduction.html')
 def layout(request):
     return render(request, 'home/pages/docs/layout.html')
 def color_mode(request):
     return render(request, 'home/pages/docs/color-mode.html')
-=======
 def main_sidebar(request):
     return render(request, 'home/pages/docs/components/main-sidebar.html')
->>>>>>> bdcbfcf97544ff990fd6d96ca7e90fa4cd1f1029
