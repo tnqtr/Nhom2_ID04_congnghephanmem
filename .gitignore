@@ -1,0 +1,5 @@
+# Bỏ qua thư mục __pycache__
+__pycache__/
+*.pyc
+# Bỏ qua file SQLite database
+*.sqlite3
