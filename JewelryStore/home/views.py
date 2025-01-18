@@ -57,3 +57,17 @@ def faq(request):
     return render(request, 'home/pages/docs/faq.html')
 def license(request):
     return render(request, 'home/pages/docs/license.html')
+def collapsed_sidebar(request):
+    return render(request, 'home/pages/layout/collapsed-sidebar.html')
+def fixed_sidebar(request):
+    return render(request, 'home/pages/layout/fixed-sidebar.html')
+def layout_custom_area(request):
+    return render(request, 'home/pages/layout/layout-custom-area.html')
+def layout_rtl(request):
+    return render(request, 'home/pages/layout/layout-rtl.html')
+def logo_switch(request):
+    return render(request, 'home/pages/layout/logo-switch.html')
+def sidebar_mini(request): 
+    return render(request, 'home/pages/layout/sidebar-mini.html')
+def unfixed_sidebar(request):
+    return render(request, 'home/pages/layout/unfixed-sidebar.html')

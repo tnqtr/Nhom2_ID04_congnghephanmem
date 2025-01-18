@@ -1,3 +1,4 @@
+{%load static%}
 <!doctype html>
 <html lang="en">
   <!--begin::Head-->
@@ -42,7 +43,7 @@
     />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="../../../dist/css/adminlte.css" />
+    <link rel="stylesheet" href="{%static 'home/dist/css/adminlte.css'%}" />
     <!--end::Required Plugin(AdminLTE)-->
   </head>
   <!--end::Head-->
@@ -86,7 +87,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="../../../dist/assets/img/user1-128x128.jpg"
+                        src="{%static 'home/dist/assets/img/user1-128x128.jpg' %}"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -112,7 +113,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="../../../dist/assets/img/user8-128x128.jpg"
+                        src="{%static 'home/dist/assets/img/user8-128x128.jpg' %}"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -138,7 +139,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="../../../dist/assets/img/user3-128x128.jpg"
+                        src="{%static 'home/dist/assets/img/user3-128x128.jpg' %}"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -203,7 +204,7 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
-                  src="../../../dist/assets/img/user2-160x160.jpg"
+                  src="{%static 'home/dist/assets/img/user2-160x160.jpg' %}"
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
@@ -213,7 +214,7 @@
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
                   <img
-                    src="../../../dist/assets/img/user2-160x160.jpg"
+                    src="{%static 'home/dist/assets/img/user2-160x160.jpg' %}"
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
@@ -257,14 +258,14 @@
           <a href="../index.html" class="brand-link logo-switch">
             <!--begin::Brand Image Small-->
             <img
-              src="../../../dist/assets/img/AdminLTELogo.png"
+              src="{%static 'home/dist/assets/img/AdminLTELogo.png' %}"
               alt="AdminLTE Logo Small"
               class="brand-image-xl logo-xs opacity-75 shadow"
             />
             <!--end::Brand Image Small-->
             <!--begin::Brand Image Large-->
             <img
-              src="../../../dist/assets/img/AdminLTEFullLogo.png"
+              src="{%static 'home/dist/assets/img/AdminLTEFullLogo.png' %}"
               alt="AdminLTE Logo Large"
               class="brand-image-xs logo-xl opacity-75"
             />
@@ -458,7 +459,7 @@
       crossorigin="anonymous"
     ></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-    <script src="../../../dist/js/adminlte.js"></script>
+    <script src="{%static 'home/dist/js/adminlte.js' %}"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
       const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';

@@ -32,4 +32,12 @@ urlpatterns = [
     path("docs/how-to-contribute.html", views.how_to_contribute, name="how-to-contribute"),
     path("docs/faq.html", views.faq, name="faq"),
     path("docs/license.html", views.license, name="license"),
+    path("layout/collapsed-sidebar.html", views.collapsed_sidebar, name="collapsed-sidebar"),
+    path("layout/fixed-sidebar.html", views.fixed_sidebar, name="fixed-sidebar"),
+    path("layout/layout-custom-area.html", views.layout_custom_area, name="layout-custom-area"),
+    path("layout/layout-rtl.html", views.layout_rtl, name="layout-rtl"),
+    path("layout/logo-switch.html", views.logo_switch, name="logo-switch"),
+    path("layout/sidebar-mini.html", views.sidebar_mini, name="sidebar-mini"),
+    path("layout/unfixed-sidebar.html", views.unfixed_sidebar, name="unfixed-sidebar"),
+    
 ]
