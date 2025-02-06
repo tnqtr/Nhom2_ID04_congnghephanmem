@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from JS_Manage.models import nhanVien
+from JS_Manage.models import nhanVien, bangGiaVang
+
 # Create your views here.
 def home(request):
     return render(request, 'home/home.html ')
@@ -75,3 +76,6 @@ def unfixed_sidebar(request):
 def nhanVien_list(request):
     nhanViens = nhanVien.objects.all()  
     return render(request, 'home/pages/index2.html', {'nhanViens': nhanViens})  # Truyền đúng biến vào template
+def bangGiaVang_list(request):
+    bangGiaVangs = bangGiaVang.objects.all()
+    return render(request, 'home/pages/docs/introduction.html', {'bangGiaVangs': bangGiaVangs})  # Truyền đúng biến vào template

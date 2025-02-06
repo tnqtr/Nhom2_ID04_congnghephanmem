@@ -24,7 +24,7 @@ urlpatterns = [
     path("examples/login-v2.html", views.login_v2, name="login-v2"),
     path("examples/register-v2.html", views.register_v2, name="register-v2"),
     path("docs/components/main-header.html", views.main_header, name="main-header"),
-    path("docs/introduction.html", views.introduction, name="introduction"),
+    path("docs/introduction.html", views.bangGiaVang_list, name="introduction"),
     path("docs/layout.html", views.layout, name="layout"),
     path("docs/color-mode.html", views.color_mode, name="color-mode"),
     path("docs/components/main-sidebar.html", views.main_sidebar, name="main-sidebar"),
@@ -41,4 +41,5 @@ urlpatterns = [
     path("layout/sidebar-mini.html", views.sidebar_mini, name="sidebar-mini"),
     path("layout/unfixed-sidebar.html", views.unfixed_sidebar, name="unfixed-sidebar"),
     path("nhanViens/", views.nhanVien_list, name="nhanVien_list"),
+    path("bangGiaVangs/", views.bangGiaVang_list, name="bangGiaVang_list"),
 ]

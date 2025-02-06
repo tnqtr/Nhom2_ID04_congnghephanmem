@@ -27,7 +27,7 @@ class nhanVien (models.Model):
     hoTen = models.CharField(max_length=100)
     quayHangPhuTrach = models.JSONField(default=dict)
     def __str__(self):
-        return f"{self.hoTen} {self.maNV}"
+        return f"{self.hoTen} {self.maNV} {self.quayHangPhuTrach}"
 
 class loaiSP (models.Model):
     maLoaiSP = models.CharField(max_length=10, primary_key=True)
@@ -92,12 +92,15 @@ class chiTietDH (models.Model):
     def __str__(self):
         return f"{self.maDH} {self.tenSP} {self.soLuong}"
 
-class bangGiaVang (models.Model):
+class bangGiaVang(models.Model):
     ngayCapNhat = models.DateTimeField()
-    giaVang = models.JSONField()
+    loaiVang = models.CharField(max_length=100, default='Vàng 9999')
+    giaMua = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)  # Thêm giá trị mặc định
+    giaBan = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)  # Thêm giá trị mặc định
     donVi = models.CharField(max_length=10)
+
     def __str__(self):
-        return self.ngayCapNhat
+        return f"{self.loaiVang} - {self.ngayCapNhat} - {self.donVi}"
 
 class bangThongKe (models.Model):
     doanhThuNV = models.JSONField(default=dict)
