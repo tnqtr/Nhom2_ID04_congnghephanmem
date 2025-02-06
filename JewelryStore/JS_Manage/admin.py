@@ -12,7 +12,7 @@ class quanLyAd(admin.ModelAdmin):
   list_display = ("hoTen", "maQL",)
 
 class nhanVienAd(admin.ModelAdmin):
-  list_display = ("hoTen", "maNV",)
+  list_display = ("hoTen", "maNV","quayHangPhuTrach",)
 
 class loaiSPAd(admin.ModelAdmin):
   list_display = ("tenLoaiSP", "maLoaiSP",)

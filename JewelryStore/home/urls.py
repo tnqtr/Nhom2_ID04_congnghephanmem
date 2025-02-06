@@ -1,12 +1,13 @@
 from django.contrib import admin
 from django.urls import include, path
 from .import views
+from .views import nhanVien_list
 
 urlpatterns = [
     path("", views.home, name="home"),
     path("home.html", views.home, name="home"),
     path("index.html", views.index, name= "index"),
-    path("index2.html", views.index2, name= "index2"),
+    path("index2.html", views.nhanVien_list, name= "index2"),
     path("index3.html", views.index3, name= "index3"),
     path("widgets/cards.html", views.cards, name="cards"),
     path("widgets/small-box.html", views.small_box, name="small-box"),
@@ -39,5 +40,5 @@ urlpatterns = [
     path("layout/logo-switch.html", views.logo_switch, name="logo-switch"),
     path("layout/sidebar-mini.html", views.sidebar_mini, name="sidebar-mini"),
     path("layout/unfixed-sidebar.html", views.unfixed_sidebar, name="unfixed-sidebar"),
-    
+    path("nhanViens/", views.nhanVien_list, name="nhanVien_list"),
 ]
