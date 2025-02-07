@@ -35,10 +35,6 @@ def sanPham_list(request):
 def khachHang_list(request):
     khachHangs = khachHang.objects.all()
     return render(request, 'home/customers/customer.html', {'khachHangs': khachHangs})
-<<<<<<< HEAD
-    
-=======
->>>>>>> 6b01381a0f3c555436ace3b070d560abe8386226
 def hoaDon_sold_list(request):
     hoaDons = hoaDon.objects.all()
     return render(request, 'home/bill/bill-sold.html', {'hoaDons': hoaDons})

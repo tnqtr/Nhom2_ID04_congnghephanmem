@@ -1,0 +1,74 @@
+
+{% extends "home/master-page.html" %}
+{% load static %}
+
+{% block navbar%}
+{% include "includes/navbar.html" %}
+{% endblock %}
+
+{% block main-content %}
+<main class="app-main">
+  <div class="app-content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6"><h3 class="mb-0">Bảo hành</h3></div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-end">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Bảo hành</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="app-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card mb-4">
+            <div class="card-header border-0">
+              <h3 class="card-title">Danh mục bảo hành</h3>
+            </div>
+            <div class="card-body table-responsive p-0">
+              <table class="table table-striped align-middle">
+                <thead>
+                  <tr>
+                    <th>Mã BH</th>
+                    <th>Đơn hàng liên kết</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for baoHanh in baoHanhs %}
+                  <tr>
+                    <td>
+                      <img
+                        src="{%static 'home/dist/assets/img/default-150x150.png' %}"
+                        alt="Product 1"
+                        class="rounded-circle img-size-32 me-2"
+                      /> 
+                      {{ baoHanh.maBH }}
+                    </td>
+                    <td>{{ baoHanh.donHangLienKet }}</td>
+                    <td><a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a></td>
+                  </tr>
+                  {% empty %}
+                  <tr><td colspan="5">Chưa cập nhật bảo hành.</td></tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock main-content %}
+
+{% block left-menu%}
+{% include "includes/left-menu.html" %}
+{% endblock %}
+
+{% block footer%}
+{% include "includes/footer.html" %}
+{% endblock %}
