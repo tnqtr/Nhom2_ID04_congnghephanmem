@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from JS_Manage.models import nhanVien, bangGiaVang, sanPham, khachHang
+from JS_Manage.models import nhanVien, bangGiaVang, sanPham, khachHang, chuongTrinhKhuyenMai
 
 # Create your views here.
 def home(request):
@@ -25,7 +25,7 @@ def simple(request):
     return render(request, 'home/pages/tables/simple.html')
 def nhanVien_list(request):
     nhanViens = nhanVien.objects.all()  
-    return render(request, 'home/pages/index2.html', {'nhanViens': nhanViens})  # Truyền đúng biến vào template
+    return render(request, 'home/dashboard/staff.html', {'nhanViens': nhanViens})  # Truyền đúng biến vào template
 def bangGiaVang_list(request):
     bangGiaVangs = bangGiaVang.objects.all()
     return render(request, 'home/gold/gold-price.html', {'bangGiaVangs': bangGiaVangs})  # Truyền đúng biến vào template
@@ -35,3 +35,7 @@ def sanPham_list(request):
 def khachHang_list(request):
     khachHangs = khachHang.objects.all()
     return render(request, 'home/customers/customer.html', {'khachHangs': khachHangs})
+def chuongTrinhKhuyenMai_list(request):
+    chuongTrinhKhuyenMais = chuongTrinhKhuyenMai.objects.all()
+    return render(request, 'home/discounts/discount.html', {'chuongTrinhKhuyenMais': chuongTrinhKhuyenMais})
+    
