@@ -28,4 +28,4 @@ def nhanVien_list(request):
     return render(request, 'home/pages/index2.html', {'nhanViens': nhanViens})  # Truyền đúng biến vào template
 def bangGiaVang_list(request):
     bangGiaVangs = bangGiaVang.objects.all()
-    return render(request, 'home/pages/gold/gold-price.html', {'bangGiaVangs': bangGiaVangs})  # Truyền đúng biến vào template
+    return render(request, 'home/gold/gold-price.html', {'bangGiaVangs': bangGiaVangs})  # Truyền đúng biến vào template
