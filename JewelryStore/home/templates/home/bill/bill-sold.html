@@ -1,0 +1,102 @@
+{%extends "home/master-page.html"%}
+{% load static%}
+
+
+{% block navbar%}
+{% include "includes/navbar.html" %}
+{% endblock %}
+
+
+{% block main-content %}
+<main class="app-main">
+    <!--begin::App Content Header-->
+    <div class="app-content-header">
+      <!--begin::Container-->
+      <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+          <div class="col-sm-6"><h3 class="mb-0">Hóa Đơn Bán Hàng</h3></div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-end">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Hóa Đơn Bán Hàng</li>
+            </ol>
+          </div>
+        </div>
+        <!--end::Row-->
+      </div>
+      <!--end::Container-->
+    </div>
+    <div class="app-content">
+      <!--begin::Container-->
+      <div class="container-fluid">
+       
+        <!--begin::Row-->
+        <div class="row">
+          <div class="col-md-12">
+            
+          </div>
+          <!-- /.col -->
+        </div>
+        <!--end::Row-->
+        <!--begin::Row-->
+        <div class="row">
+          <div class="card mb-4">
+            <div class="card-header border-0">
+              <h3 class="card-title">Hóa đơn</h3>
+              <div class="card-tools">
+                <a href="#" class="btn btn-tool btn-sm"> <i class="bi bi-download"></i> </a>
+                <a href="#" class="btn btn-tool btn-sm"> <i class="bi bi-list"></i> </a>
+              </div>
+            </div>
+            <div class="card-body table-responsive p-0">
+              <table class="table table-striped align-middle">
+                <thead>
+                  <tr>
+                    <th>Mã HĐ</th>
+                    <th>Ngày tạo</th>
+                    <th>Mã KH</th>
+                    <th>Mã NV</th>
+                    <th>Tổng tiền</th>
+                   
+                  </tr>
+                </thead>
+                  <tbody>
+                    {% for hoaDon in hoaDons %}
+                    <tr>
+                      <td>{{ hoaDon.maHD }}</td>
+                      <td>{{ hoaDon.ngayTao }}</td>
+                      <td>{{ hoaDon.maKH_id }}</td>
+                      <td>{{ hoaDon.maNV_id }}</td>
+                      <td>{{ hoaDon.tongTien}}</td>
+                    
+                      <td><a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a></td>
+                    </tr>
+                    {% empty %}
+                   <tr><td colspan="4">Không có sản phẩm nào.</td></tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- /.card -->
+          <!-- Start col -->
+          <div class="col-md-8">
+          </div>
+        </div>
+        <!--end::Row-->
+      </div>
+      <!--end::Container-->
+    </div>
+    <!--end::App Content-->
+  </main>
+
+{% endblock main-content %}
+
+{% block left-menu%}
+{% include "includes/left-menu.html" %}
+{% endblock %}
+
+{% block footer%}
+{% include "includes/footer.html" %}
+{% endblock %}
