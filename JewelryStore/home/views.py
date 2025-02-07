@@ -35,7 +35,7 @@ def sanPham_list(request):
 def khachHang_list(request):
     khachHangs = khachHang.objects.all()
     return render(request, 'home/customers/customer.html', {'khachHangs': khachHangs})
-    return render(request, 'home/customers/customer.html', {'khachHangs': khachHangs})
+    
 def hoaDon_sold_list(request):
     hoaDons = hoaDon.objects.all()
     return render(request, 'home/bill/bill-sold.html', {'hoaDons': hoaDons})
