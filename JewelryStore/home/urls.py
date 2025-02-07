@@ -23,4 +23,5 @@ urlpatterns = [
     path("bill/bill-sold.html", views.hoaDon_sold_list, name="bill-sold"),
     path("bill/bill-back.html", views.hoaDon_back_list, name="bill-back"),
     path("warranty/warranty.html", views.baoHanh_list, name="warranty"),
+    path("discounts/discount.html", views.chuongTrinhKhuyenMai_list, name="discounts"),
 ]
