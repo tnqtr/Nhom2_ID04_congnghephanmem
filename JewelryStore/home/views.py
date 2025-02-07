@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from JS_Manage.models import nhanVien, bangGiaVang, sanPham
+from JS_Manage.models import nhanVien, bangGiaVang, sanPham, khachHang
 
 # Create your views here.
 def home(request):
@@ -34,3 +34,6 @@ def bangGiaVang_list(request):
 def sanPham_list(request):
     sanPhams = sanPham.objects.all()
     return render(request, 'home/products/product.html', {'sanPhams': sanPhams})
+def khachHang_list(request):
+    khachHangs = khachHang.objects.all()
+    return render(request, 'home/customers/customer.html', {'khachHangs': khachHangs})
