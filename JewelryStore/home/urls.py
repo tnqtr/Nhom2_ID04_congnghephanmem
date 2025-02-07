@@ -42,4 +42,5 @@ urlpatterns = [
     path("layout/unfixed-sidebar.html", views.unfixed_sidebar, name="unfixed-sidebar"),
     path("nhanViens/", views.nhanVien_list, name="nhanVien_list"),
     path("bangGiaVangs/", views.bangGiaVang_list, name="bangGiaVang_list"),
+    path("products/product.html", views.sanPham_list, name="products"),
 ]

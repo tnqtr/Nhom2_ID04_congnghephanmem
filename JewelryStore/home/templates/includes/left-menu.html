@@ -3,10 +3,10 @@
     <!--begin::Sidebar Brand-->
     <div class="sidebar-brand">
       <!--begin::Brand Link-->
-      <a href="home.html" class="brand-link">
+      <a href="{% url 'home' %}" class="brand-link">
         <!--begin::Brand Image-->
         <img
-          src="{%static 'home/dist/assets/img/AdminLTELogo.png' %}"
+          src="{% static 'home/dist/assets/img/AdminLTELogo.png' %}"
           alt="AdminLTE Logo"
           class="brand-image opacity-75 shadow"
         />
@@ -38,13 +38,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
+                <a href="{% url 'index' %}" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>Doanh Thu</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="{% url 'index2' %}" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>Nhân Viên</p>
                 </a>
@@ -53,7 +53,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{% url 'products' %}" class="nav-link">
               <i class="nav-icon bi bi-bag"></i>
               <p>Sản Phẩm</p>
             </a>
@@ -74,7 +74,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="./docs/introduction.html" class="nav-link">
+            <a href="{% url 'introduction' %}" class="nav-link">
               <i class="nav-icon bi bi-currency-dollar"></i>
               <p>Bảng Giá Vàng</p>
             </a>
@@ -90,7 +90,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./forms/general.html" class="nav-link">
+                <a href="{% url 'forms' %}" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>General Elements</p>
                 </a>
@@ -107,7 +107,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./tables/simple.html" class="nav-link">
+                <a href="{% url 'simple' %}" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>Simple Tables</p>
                 </a>
@@ -134,13 +134,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="./examples/login.html" class="nav-link">
+                    <a href="{% url 'login' %}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Login</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="./examples/register.html" class="nav-link">
+                    <a href="{% url 'register' %}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Register</p>
                     </a>
@@ -157,13 +157,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="./examples/login-v2.html" class="nav-link">
+                    <a href="{% url 'login-v2' %}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Login</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="./examples/register-v2.html" class="nav-link">
+                    <a href="{% url 'register-v2' %}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Register</p>
                     </a>
@@ -171,7 +171,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="./examples/lockscreen.html" class="nav-link">
+                <a href="{% url 'lockscreen' %}" class="nav-link">
                   <i class="nav-icon bi bi-circle"></i>
                   <p>Lockscreen</p>
                 </a>
