@@ -6,9 +6,8 @@ from .views import nhanVien_list
 urlpatterns = [
     path("", views.home, name="home"),
     path("home.html", views.home, name="home"),
-    path("index.html", views.index, name= "index"),
-    path("index2.html", views.nhanVien_list, name= "index2"),
-    path("index3.html", views.index3, name= "index3"),
+    path("income.html", views.income, name= "income"),
+    path("staff.html", views.nhanVien_list, name= "staff"),
     path("forms/general.html", views.forms, name="forms"),
     path("examples/lockscreen.html", views.lockscreen, name="lockscreen"),
     path("examples/login.html", views.login, name="login"),

@@ -5,12 +5,10 @@ from JS_Manage.models import nhanVien, bangGiaVang, sanPham, khachHang
 # Create your views here.
 def home(request):
     return render(request, 'home/home.html')
-def index (request):
-    return render(request, 'home/pages/index.html')
-def index2 (request):
-    return render(request, 'home/pages/index2.html')
-def index3 (request):
-    return render(request, 'home/pages/index3.html')
+def income (request):
+    return render(request, 'home/dashboard/income.html')
+def staff (request):
+    return render(request, 'home/dashboard/staff.html')
 def forms(request):
     return render(request, 'home/pages/forms/general.html')
 def lockscreen(request):
