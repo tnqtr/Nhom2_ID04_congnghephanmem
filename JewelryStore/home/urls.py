@@ -18,4 +18,5 @@ urlpatterns = [
     path("gold/gold-price.html", views.bangGiaVang_list, name="gold-price"),
     path("nhanViens/", views.nhanVien_list, name="nhanVien_list"),
     path("bangGiaVangs/", views.bangGiaVang_list, name="bangGiaVang_list"),
+    path("products/product.html", views.sanPham_list, name="products"),
 ]

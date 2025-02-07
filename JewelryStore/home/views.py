@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from JS_Manage.models import nhanVien, bangGiaVang
+from JS_Manage.models import nhanVien, bangGiaVang, sanPham
 
 # Create your views here.
 def home(request):
-    return render(request, 'home/home.html ')
+    return render(request, 'home/home.html')
 def index (request):
     return render(request, 'home/pages/index.html')
 def index2 (request):
@@ -29,3 +29,6 @@ def nhanVien_list(request):
 def bangGiaVang_list(request):
     bangGiaVangs = bangGiaVang.objects.all()
     return render(request, 'home/gold/gold-price.html', {'bangGiaVangs': bangGiaVangs})  # Truyền đúng biến vào template
+def sanPham_list(request):
+    sanPhams = sanPham.objects.all()
+    return render(request, 'home/products/product.html', {'sanPhams': sanPhams})
