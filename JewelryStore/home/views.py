@@ -23,6 +23,8 @@ def login_v2(request):
     return render(request, 'home/pages/examples/login-v2.html')
 def register_v2(request):
     return render(request, 'home/pages/examples/register-v2.html')
+def simple(request):    
+    return render(request, 'home/pages/tables/simple.html')
 def nhanVien_list(request):
     nhanViens = nhanVien.objects.all()  
     return render(request, 'home/pages/index2.html', {'nhanViens': nhanViens})  # Truyền đúng biến vào template

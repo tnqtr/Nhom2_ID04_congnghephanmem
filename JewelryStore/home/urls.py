@@ -15,6 +15,7 @@ urlpatterns = [
     path("examples/register.html", views.register, name="register"),
     path("examples/login-v2.html", views.login_v2, name="login-v2"),
     path("examples/register-v2.html", views.register_v2, name="register-v2"),
+    path("tables/simple.html", views.simple, name="simple"),
     path("gold/gold-price.html", views.bangGiaVang_list, name="gold-price"),
     path("nhanViens/", views.nhanVien_list, name="nhanVien_list"),
     path("bangGiaVangs/", views.bangGiaVang_list, name="bangGiaVang_list"),
