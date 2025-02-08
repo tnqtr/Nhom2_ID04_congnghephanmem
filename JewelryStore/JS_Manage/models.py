@@ -63,6 +63,15 @@ class hoaDon (models.Model):
     tongTien = models.DecimalField(max_digits=10, decimal_places=2)
     def __str__(self):
         return f"{self.maHD} {self.ngayTao}"
+    
+class hoaDonMuaLai (models.Model):
+    maHD = models.CharField(max_length=10, primary_key=True, default='DEFAULT_VALUE')
+    ngayTao = models.DateField()
+    maKH = models.ForeignKey(khachHang, on_delete=models.CASCADE)
+    maNV = models.ForeignKey(nhanVien, on_delete=models.CASCADE)
+    tongTien = models.DecimalField(max_digits=10, decimal_places=2)
+    def __str__(self):
+        return f"{self.maHD} {self.ngayTao}"
 
 class chiTietHD (models.Model):
     maHD = models.ForeignKey(hoaDon, on_delete=models.CASCADE)

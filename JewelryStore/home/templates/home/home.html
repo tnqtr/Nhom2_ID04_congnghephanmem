@@ -17,7 +17,7 @@
         <div class="col-sm-6"><h3 class="mb-0">Thống kê</h3></div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-end">
-            <li class="breadcrumb-item"><a href="home.html">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="home.html">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Thống kê</li>
           </ol>
         </div>
@@ -53,7 +53,7 @@
               ></path>
             </svg>
             <a
-              href="#"
+              href="{% url 'bill-sold' %}"
               class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
             >
               Chi tiết <i class="bi bi-link-45deg"></i>
@@ -109,7 +109,7 @@
               ></path>
             </svg>
             <a
-              href="#"
+              href="{% url 'customers' %}"
               class="small-box-footer link-dark link-underline-opacity-0 link-underline-opacity-50-hover"
             >
             Chi tiết <i class="bi bi-link-45deg"></i>
@@ -144,7 +144,7 @@
               ></path>
             </svg>
             <a
-              href="#"
+              href="{% url 'staff' %}"
               class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
             >
             Chi tiết <i class="bi bi-link-45deg"></i>
