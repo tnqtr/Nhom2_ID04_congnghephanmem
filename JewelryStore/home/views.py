@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from JS_Manage.models import nhanVien, bangGiaVang, sanPham, khachHang, hoaDon, hoaDonMuaLai, baoHanh, chuongTrinhKhuyenMai
+from JS_Manage.models import nhanVien, bangGiaVang, sanPham, khachHang, hoaDon, hoaDonMuaLai, baoHanh, chuongTrinhKhuyenMai, loaiSP
 
 # Create your views here.
 def home(request):
@@ -46,7 +46,7 @@ def hoaDon_back_list(request):
 # Warranty App
 def baoHanh_list(request):
     baoHanhs = baoHanh.objects.all()
-    return render(request, 'home/warranty/warranty.html', {'baoHanh': baoHanhs})
+    return render(request, 'home/warranty/warranty.html', {'baoHanhs': baoHanhs})
 
 # Discount App
 def chuongTrinhKhuyenMai_list(request):
@@ -85,7 +85,9 @@ def sanPham_list(request):
 def edit_product(request, maSP):
     sanPham_obj = get_object_or_404(sanPham, maSP=maSP)
     if request.method == 'POST':
-        sanPham_obj.maLoaiSP = request.POST.get('maLoaiSP')
+        maLoaiSP = request.POST.get('maLoaiSP')
+        loaiSP_obj = get_object_or_404(loaiSP, maLoaiSP=maLoaiSP)
+        sanPham_obj.maLoaiSP = loaiSP_obj
         sanPham_obj.tenSP = request.POST.get('tenSP')
         sanPham_obj.trongLuong = request.POST.get('trongLuong')
         sanPham_obj.tienCong = request.POST.get('tienCong')
