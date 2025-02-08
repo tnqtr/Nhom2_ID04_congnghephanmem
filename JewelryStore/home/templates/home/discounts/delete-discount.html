@@ -1,0 +1,46 @@
+{% extends "home/master-page.html" %}
+{% load static %}
+
+{% block navbar %}
+{% include "includes/navbar.html" %}
+{% endblock %}
+
+{% block main-content %}
+<main class="app-main">
+    <div class="app-content-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6"><h3 class="mb-0">Xóa chương trình khuyến mãi</h3></div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-end">
+                        <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Xóa chương trình khuyến mãi</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="app-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Bạn có chắc chắn muốn xóa chương trình khuyến mãi {{ chuongTrinhKhuyenMai.maKM }} ({{ chuongTrinhKhuyenMai.moTa }}) không?</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                        <a href="{% url 'discounts' %}" class="btn btn-secondary">Hủy</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock main-content %}
+
+{% block left-menu %}
+{% include "includes/left-menu.html" %}
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer.html" %}
+{% endblock %}

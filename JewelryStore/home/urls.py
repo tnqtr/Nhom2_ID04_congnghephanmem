@@ -30,4 +30,6 @@ urlpatterns = [
     path("products/edit-product.html/<str:maSP>/", views.edit_product, name="edit-product"),
     path("products/delete-product/<str:maSP>/", views.delete_product, name="delete-product"),
     #path("products/add-product.html", views.add_product, name="add-product"),
+    path("discounts/edit-discount.html/<str:maKM>/", views.edit_discount, name="edit-discount"),
+    path("discounts/delete-discount/<str:maKM>/", views.delete_discount, name="delete-discount"),
 ]   

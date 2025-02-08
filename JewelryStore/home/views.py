@@ -103,3 +103,18 @@ def delete_product(request, maSP):
         sanPham_obj.delete()
         return redirect('products')
     return render(request, 'home/products/delete-product.html', {'sanPham': sanPham_obj})
+
+def edit_discount(request, maKM):
+    chuongTrinhKhuyenMai_obj = get_object_or_404(chuongTrinhKhuyenMai, maKM=maKM)
+    if request.method == 'POST':
+        chuongTrinhKhuyenMai_obj.moTa = request.POST.get('moTa')
+        chuongTrinhKhuyenMai_obj.tyLeChietKhau = request.POST.get('tyLeChietKhau')
+        chuongTrinhKhuyenMai_obj.save()
+        return redirect('discounts')
+    return render(request, 'home/discounts/edit-discount.html', {'chuongTrinhKhuyenMai': chuongTrinhKhuyenMai_obj})
+def delete_discount(request, maKM):
+    chuongTrinhKhuyenMai_obj = get_object_or_404(chuongTrinhKhuyenMai, maKM=maKM)
+    if request.method == 'POST':
+        chuongTrinhKhuyenMai_obj.delete()
+        return redirect('discounts')
+    return render(request, 'home/discounts/delete-discount.html', {'chuongTrinhKhuyenMai': chuongTrinhKhuyenMai_obj})
