@@ -26,4 +26,8 @@ urlpatterns = [
     path("discounts/discount.html", views.chuongTrinhKhuyenMai_list, name="discounts"),
     path("customers/edit-customer.html/<str:maKH>/", views.edit_customer, name="edit-customer"),
     path("customers/delete-customer/<str:maKH>/", views.delete_customer, name="delete-customer"),
+    #path("customers/add-customer.html", views.add_customer, name="add-customer"),
+    path("products/edit-product.html/<str:maSP>/", views.edit_product, name="edit-product"),
+    path("products/delete-product/<str:maSP>/", views.delete_product, name="delete-product"),
+    #path("products/add-product.html", views.add_product, name="add-product"),
 ]   

@@ -1,0 +1,72 @@
+{% extends "home/master-page.html" %}
+{% load static %}
+
+{% block navbar %}
+{% include "includes/navbar.html" %}
+{% endblock %}
+
+{% block main-content %}
+<main class="app-main">
+  <div class="app-content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6"><h3 class="mb-0">Chỉnh sửa Sản phẩm</h3></div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-end">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa Sản phẩm</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="app-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="maSP" class="form-label">Mã SP</label>
+              <input type="text" class="form-control" id="maSP" name="maSP" value="{{ sanPham.maSP }}" readonly>
+            </div> 
+            <div class="mb-3">
+              <label for="maLoaiSP" class="form-label">Mã loại SP</label>
+              <input type="text" class="form-control" id="maLoaiSP" name="maLoaiSP" value="{{ sanPham.maLoaiSP }}">
+            </div>
+            <div class="mb-3">
+              <label for="tenSP" class="form-label">Tên SP</label>
+              <input type="text" class="form-control" id="tenSP" name="tenSP" value="{{ sanPham.tenSP }}">
+            </div>
+            <div class="mb-3">
+              <label for="trongLuong" class="form-label">Trọng Lượng</label>
+              <input type="number" class="form-control" id="trongLuong" name="trongLuong" value="{{ sanPham.trongLuong }}">
+            </div>
+            <div class="mb-3">
+              <label for="tienCong" class="form-label">Tiền Công</label>
+              <input type="number" class="form-control" id="tienCong" name="tienCong" value="{{ sanPham.tienCong }}">
+            </div>
+            <div class="mb-3">
+                <label for="tienDa" class="form-label">Tiền Đá</label>
+                <input type="number" class="form-control" id="tienDa" name="tienDa" value="{{ sanPham.tienDa }}">
+            </div>
+            <div class="mb-3">
+                <label for="barcodeSP" class="form-label">Barcode SP</label>
+                <input type="number" class="form-control" id="barcodeSP" name="barcodeSP" value="{{ sanPham.barcodeSP }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock main-content %}
+
+{% block left-menu %}
+{% include "includes/left-menu.html" %}
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer.html" %}
+{% endblock %}
