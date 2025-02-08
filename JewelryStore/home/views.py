@@ -48,6 +48,24 @@ def baoHanh_list(request):
     baoHanhs = baoHanh.objects.all()
     return render(request, 'home/warranty/warranty.html', {'baoHanhs': baoHanhs})
 
+def edit_warranty(request, maBH):
+    baoHanh_obj = get_object_or_404(baoHanh, maBH=maBH)
+    if request.method == 'POST':
+        baoHanh_obj.maBH = request.POST.get('maBH')
+        baoHanh_obj.ngayCapNhat = request.POST.get('ngayCapNhat')
+        baoHanh_obj.maKH = request.POST.get('maKH')
+        baoHanh_obj.maNV = request.POST.get('maNV')
+        baoHanh_obj.save()
+        return redirect('warranty')
+    return render(request, 'home/warranty/edit-warranty.html', {'baoHanh': baoHanh_obj})
+
+def delete_warranty(request, maBH):
+    baoHanh_obj = get_object_or_404(baoHanh, maBH=maBH)
+    if request.method == 'POST':
+        baoHanh_obj.delete()
+        return redirect('warranty')
+    return render(request, 'home/warranty/delete-warranty.html', {'baoHanh': baoHanh_obj})
+
 # Discount App
 def chuongTrinhKhuyenMai_list(request):
     chuongTrinhKhuyenMais = chuongTrinhKhuyenMai.objects.all()

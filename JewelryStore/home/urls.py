@@ -32,4 +32,6 @@ urlpatterns = [
     #path("products/add-product.html", views.add_product, name="add-product"),
     path("discounts/edit-discount.html/<str:maKM>/", views.edit_discount, name="edit-discount"),
     path("discounts/delete-discount/<str:maKM>/", views.delete_discount, name="delete-discount"),
+    path("warranty/edit-warranty.html/<str:maBH>/", views.edit_warranty, name="edit-warranty"),
+    path("warranty/delete-warranty/<str:maBH>/", views.delete_warranty, name="delete-warranty"),
 ]   

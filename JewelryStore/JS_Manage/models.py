@@ -33,7 +33,7 @@ class loaiSP (models.Model):
     maLoaiSP = models.CharField(max_length=10, primary_key=True)
     tenLoaiSP = models.CharField(max_length=100)
     def __str__(self):
-        return f"{self.tenLoaiSP} {self.maLoaiSP}"
+        return f"{self.maLoaiSP}"
 
 class sanPham (models.Model):
     maSP = models.CharField(max_length=10, primary_key=True)

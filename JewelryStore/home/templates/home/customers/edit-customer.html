@@ -26,10 +26,10 @@
         <div class="col-md-12">
           <form method="post">
             {% csrf_token %}
-            <div class="mb-3">
+            {% comment %} <div class="mb-3">
               <label for="maKH" class="form-label">Mã KH</label>
               <input type="text" class="form-control" id="maKH" name="maKH" value="{{ khachHang.maKH }}" readonly>
-            </div> 
+            </div> {% endcomment %}
             <div class="mb-3">
               <label for="hoTen" class="form-label">Họ tên KH</label>
               <input type="text" class="form-control" id="hoTen" name="hoTen" value="{{ khachHang.hoTen }}">
