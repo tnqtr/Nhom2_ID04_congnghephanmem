@@ -49,7 +49,24 @@
                       {{ baoHanh.maBH }}
                     </td>
                     <td>{{ baoHanh.donHangLienKet }}</td>
-                    <td><a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a></td>
+                    <td>
+                      <div class="dropdown">
+                        <a href="#" class="text-secondary" data-bs-toggle="dropdown">
+                          <i class="bi bi-three-dots-vertical"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                          <a class="dropdown-item" href="#">
+                            <i class="bi bi-search"></i> Xem
+                          </a>
+                          <a class="dropdown-item" href="{% url 'edit-warranty' baoHanh.maBH %}">
+                            <i class="bi bi-pencil-square"></i> Sửa
+                          </a>
+                          <a class="dropdown-item text-danger" href="{% url 'delete-warranty' baoHanh.maBH %}">
+                            <i class="bi bi-trash"></i> Xóa
+                          </a>
+                        </div>
+                      </div>
+                    </td>
                   </tr>
                   {% empty %}
                   <tr><td colspan="5">Chưa cập nhật bảo hành.</td></tr>

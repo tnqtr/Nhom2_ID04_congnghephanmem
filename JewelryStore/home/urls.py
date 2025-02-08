@@ -29,5 +29,6 @@ urlpatterns = [
     #path("customers/add-customer.html", views.add_customer, name="add-customer"),
     path("products/edit-product.html/<str:maSP>/", views.edit_product, name="edit-product"),
     path("products/delete-product/<str:maSP>/", views.delete_product, name="delete-product"),
-    #path("products/add-product.html", views.add_product, name="add-product"),
+    path("warranty/edit-warranty.html/<str:maBH>/", views.edit_warranty, name="edit-warranty"),
+    path("warranty/delete-warranty/<str:maBH>/", views.delete_warranty, name="delete-warranty"),
 ]   
