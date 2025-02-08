@@ -1,0 +1,64 @@
+{% extends "home/master-page.html" %}
+{% load static %}
+
+{% block navbar %}
+{% include "includes/navbar.html" %}
+{% endblock %}
+
+{% block main-content %}
+<main class="app-main">
+  <div class="app-content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6"><h3 class="mb-0">Chỉnh sửa khách hàng</h3></div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-end">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa khách hàng</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="app-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="maKH" class="form-label">Mã KH</label>
+              <input type="text" class="form-control" id="maKH" name="maKH" value="{{ khachHang.maKH }}" readonly>
+            </div> 
+            <div class="mb-3">
+              <label for="hoTen" class="form-label">Họ tên KH</label>
+              <input type="text" class="form-control" id="hoTen" name="hoTen" value="{{ khachHang.hoTen }}">
+            </div>
+            <div class="mb-3">
+              <label for="soDT" class="form-label">SĐT</label>
+              <input type="text" class="form-control" id="soDT" name="soDT" value="{{ khachHang.soDT }}">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" value="{{ khachHang.email }}">
+            </div>
+            <div class="mb-3">
+              <label for="diemTichLuy" class="form-label">Điểm tích lũy</label>
+              <input type="number" class="form-control" id="diemTichLuy" name="diemTichLuy" value="{{ khachHang.diemTichLuy }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock main-content %}
+
+{% block left-menu %}
+{% include "includes/left-menu.html" %}
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer.html" %}
+{% endblock %}

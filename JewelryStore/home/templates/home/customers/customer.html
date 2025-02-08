@@ -1,8 +1,7 @@
-
 {% extends "home/master-page.html" %}
 {% load static %}
 
-{% block navbar%}
+{% block navbar %}
 {% include "includes/navbar.html" %}
 {% endblock %}
 
@@ -27,7 +26,7 @@
         <div class="col-md-12">
           <div class="card mb-4">
             <div class="card-header border-0">
-              <h3 class="card-title">Khách hàng của cửa hànghàng</h3>
+              <h3 class="card-title">Khách hàng của cửa hàng</h3>
             </div>
             <div class="card-body table-responsive p-0">
               <table class="table table-striped align-middle">
@@ -38,6 +37,7 @@
                     <th>SĐT</th>
                     <th>Email</th>
                     <th>Điểm tích lũy</th>
+                    <th>Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -45,8 +45,8 @@
                   <tr>
                     <td>
                       <img
-                        src="{%static 'home/dist/assets/img/default-150x150.png' %}"
-                        alt="Product 1"
+                        src="{% static 'home/dist/assets/img/default-150x150.png' %}"
+                        alt="Avatar"
                         class="rounded-circle img-size-32 me-2"
                       /> 
                       {{ khachHang.maKH }}
@@ -55,10 +55,28 @@
                     <td>{{ khachHang.soDT }}</td>
                     <td>{{ khachHang.email }}</td>
                     <td>{{ khachHang.diemTichLuy }}</td>
-                    <td><a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a></td>
+                    <td>
+                      <div class="dropdown">
+                        <a href="#" class="text-secondary" data-bs-toggle="dropdown">
+                          <i class="bi bi-three-dots-vertical"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a class="dropdown-item" href="{% url 'edit-customer' khachHang.maKH %}">
+                              <i class="bi bi-pencil-square"></i> Sửa
+                            </a>
+                          </li>
+                           <li>
+                            <a class="dropdown-item text-danger" href="{% url 'delete-customer' khachHang.maKH %}" onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?')">
+                              <i class="bi bi-trash"></i> Xóa
+                            </a>
+                          </li> 
+                        </ul>
+                      </div>
+                    </td>
                   </tr>
                   {% empty %}
-                  <tr><td colspan="5">Chưa cập nhật khách hàng.</td></tr>
+                  <tr><td colspan="6">Chưa cập nhật khách hàng.</td></tr>
                   {% endfor %}
                 </tbody>
               </table>
@@ -71,10 +89,10 @@
 </main>
 {% endblock main-content %}
 
-{% block left-menu%}
+{% block left-menu %}
 {% include "includes/left-menu.html" %}
 {% endblock %}
 
-{% block footer%}
+{% block footer %}
 {% include "includes/footer.html" %}
 {% endblock %}

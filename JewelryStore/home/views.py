@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from JS_Manage.models import nhanVien, bangGiaVang, sanPham, khachHang, hoaDon, hoaDonMuaLai, baoHanh, chuongTrinhKhuyenMai
 
@@ -47,3 +47,20 @@ def baoHanh_list(request):
 def chuongTrinhKhuyenMai_list(request):
     chuongTrinhKhuyenMais = chuongTrinhKhuyenMai.objects.all()
     return render(request, 'home/discounts/discount.html', {'chuongTrinhKhuyenMais': chuongTrinhKhuyenMais})
+def edit_customer(request, maKH):
+    khachHang_obj = get_object_or_404(khachHang, maKH=maKH)
+    if request.method == 'POST':
+        # Xử lý form và lưu thay đổi
+        khachHang_obj.hoTen = request.POST.get('hoTen')
+        khachHang_obj.soDT = request.POST.get('soDT')
+        khachHang_obj.email = request.POST.get('email')
+        khachHang_obj.diemTichLuy = request.POST.get('diemTichLuy')
+        khachHang_obj.save()
+        return redirect('customers')
+    return render(request, 'home/customers/edit-customer.html', {'khachHang': khachHang_obj})
+def delete_customer(request, maKH):
+    khachHang_obj = get_object_or_404(khachHang, maKH=maKH)
+    if request.method == 'POST':
+        khachHang_obj.delete()
+        return redirect('customers')
+    return render(request, 'home/customers/delete-customer.html', {'khachHang': khachHang_obj})

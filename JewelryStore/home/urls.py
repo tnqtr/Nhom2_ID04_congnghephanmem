@@ -24,4 +24,6 @@ urlpatterns = [
     path("bill/bill-back.html", views.hoaDon_back_list, name="bill-back"),
     path("warranty/warranty.html", views.baoHanh_list, name="warranty"),
     path("discounts/discount.html", views.chuongTrinhKhuyenMai_list, name="discounts"),
-]
+    path("customers/edit-customer.html/<str:maKH>/", views.edit_customer, name="edit-customer"),
+    path("customers/delete-customer/<str:maKH>/", views.delete_customer, name="delete-customer"),
+]   
