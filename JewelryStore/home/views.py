@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from JS_Manage.models import nhanVien, bangGiaVang, sanPham, khachHang, hoaDon, hoaDonMuaLai, baoHanh, chuongTrinhKhuyenMai, loaiSP
-
+from .forms import KhachHangForm
 # Create your views here.
 def home(request):
     return render(request, 'home/home.html')
@@ -136,3 +136,13 @@ def delete_discount(request, maKM):
         chuongTrinhKhuyenMai_obj.delete()
         return redirect('discounts')
     return render(request, 'home/discounts/delete-discount.html', {'chuongTrinhKhuyenMai': chuongTrinhKhuyenMai_obj})
+
+def add_customer(request):
+    if request.method == 'POST':
+        form = KhachHangForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('customers')
+    else:
+        form = KhachHangForm()
+    return render(request, 'home/customers/add-customer.html', {'form': form})

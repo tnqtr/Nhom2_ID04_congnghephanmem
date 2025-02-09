@@ -1,0 +1,74 @@
+{% extends "home/master-page.html" %}
+{% load static %}
+
+{% block navbar %}
+{% include "includes/navbar.html" %}
+{% endblock %}
+
+{% block main-content %}
+<main class="app-main">
+  <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-6">
+      <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-header bg-primary text-white text-center">
+          <h4>Thêm Khách Hàng</h4>
+        </div>
+        <div class="card-body p-4">
+          <form method="post">
+            {% csrf_token %}
+
+            <!-- Mã khách hàng -->
+            <div class="mb-3">
+              <label for="id_maKH" class="form-label fw-semibold">Mã khách hàng</label>
+              <input type="text" class="form-control input-hover" id="id_maKH" name="maKH" placeholder="Nhập mã khách hàng">
+            </div>
+
+            <!-- Họ tên -->
+            <div class="mb-3">
+              <label for="id_hoTen" class="form-label fw-semibold">Họ tên</label>
+              <input type="text" class="form-control input-hover" id="id_hoTen" name="hoTen" placeholder="Nhập họ tên">
+            </div>
+
+            <!-- Số điện thoại -->
+            <div class="mb-3">
+              <label for="id_soDT" class="form-label fw-semibold">Số điện thoại</label>
+              <input type="text" class="form-control input-hover" id="id_soDT" name="soDT" placeholder="Nhập số điện thoại">
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="id_email" class="form-label fw-semibold">Email</label>
+              <input type="email" class="form-control input-hover" id="id_email" name="email" placeholder="Nhập email">
+            </div>
+
+            <!-- Điểm tích lũy -->
+            <div class="mb-3">
+              <label for="id_diemTichLuy" class="form-label fw-semibold">Điểm tích lũy</label>
+              <input type="number" class="form-control input-hover" id="id_diemTichLuy" name="diemTichLuy" placeholder="Nhập điểm tích lũy">
+            </div>
+
+            <!-- Nút Submit -->
+            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">➕ Thêm </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock main-content %}
+
+{% block left-menu %}
+{% include "includes/left-menu.html" %}
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer.html" %}
+{% endblock %}
+
+<!-- CSS Tùy Chỉnh -->
+<style>
+  .input-hover:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+  }
+</style>
