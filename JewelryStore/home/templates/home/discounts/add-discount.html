@@ -1,0 +1,79 @@
+{% extends "home/master-page.html" %}
+{% load static %}
+
+{% block navbar %}
+{% include "includes/navbar.html" %}
+{% endblock %}
+
+{% block main-content %}
+<main class="app-main">
+  <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-6">
+      <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-header bg-primary text-white text-center">
+          <h4>Thêm Chương Trình Khuyến Mãi</h4>
+        </div>
+        <div class="card-body p-4">
+          <form method="post">
+            {% csrf_token %}
+
+            <!-- Mã sản phẩm -->
+            <div class="mb-3">
+              <label for="id_maKM" class="form-label fw-semibold">Mã khuyến mãi</label>
+              <input type="text" class="form-control input-hover" id="id_maKM" name="maKM" placeholder="Nhập mã khuyến mãi">
+            </div>
+
+            <!-- Mã loại sp -->
+            <div class="mb-3">
+              <label for="id_moTa" class="form-label fw-semibold">Mô tả</label>
+              <input type="text" class="form-control input-hover" id="id_moTa" name="moTa" placeholder="Nhập mô tả">
+            </div>
+
+            <!-- Tên sản phẩm -->
+            <div class="mb-3">
+              <label for="id_ngayBatDau" class="form-label fw-semibold">Ngày bắt đầu</label>
+              <input type="date" class="form-control input-hover" id="id_ngayBatDau" name="ngayBatDau" placeholder="Nhập ngày bắt đầu">
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="id_ngayKetThuc" class="form-label fw-semibold">Ngày kết thúc</label>
+              <input type="date" class="form-control input-hover" id="id_ngayKetThuc" name="ngayKetThuc" placeholder="Nhập ngày kết thúc"> 
+            </div>
+
+            <!-- Điểm tích lũy -->
+            <div class="mb-3">
+              <label for="id_tyLeChietKhau" class="form-label fw-semibold">Tỷ lệ chiết khấu</label>
+              <input type="number" class="form-control input-hover" id="id_tyLeChietKhau" name="tyLeChietKhau" placeholder="Nhập tỷ lệ chiết khấu">
+            </div>
+
+            
+
+
+
+
+            <!-- Nút Submit -->
+            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">➕ Thêm </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock main-content %}
+
+{% block left-menu %}
+{% include "includes/left-menu.html" %}
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer.html" %}
+{% endblock %}
+
+<!-- CSS Tùy Chỉnh -->
+<style>
+  .input-hover:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+  }
+</style>

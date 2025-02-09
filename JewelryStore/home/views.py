@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from JS_Manage.models import nhanVien, bangGiaVang, sanPham, khachHang, hoaDon, hoaDonMuaLai, baoHanh, chuongTrinhKhuyenMai, loaiSP
-from .forms import KhachHangForm
+from .forms import KhachHangForm, SanPhamForm, ChuongTrinhKhuyenMaiForm, BaoHanhForm
 # Create your views here.
 def home(request):
     return render(request, 'home/home.html')
@@ -146,3 +146,32 @@ def add_customer(request):
     else:
         form = KhachHangForm()
     return render(request, 'home/customers/add-customer.html', {'form': form})
+def add_product(request):
+    if request.method == 'POST':
+        form = SanPhamForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('products')
+    else:
+        form = SanPhamForm()
+    return render(request, 'home/products/add-product.html', {'form': form})
+
+def add_discount(request):
+    if request.method == 'POST':
+        form = ChuongTrinhKhuyenMaiForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('discounts')
+    else:
+        form = ChuongTrinhKhuyenMaiForm()
+    return render(request, 'home/discounts/add-discount.html', {'form': form})
+
+def add_warranty(request):
+    if request.method == 'POST':
+        form = BaoHanhForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('warranty')
+    else:
+        form = BaoHanhForm()
+    return render(request, 'home/warranty/add-warranty.html', {'form': form})

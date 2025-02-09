@@ -1,0 +1,88 @@
+{% extends "home/master-page.html" %}
+{% load static %}
+
+{% block navbar %}
+{% include "includes/navbar.html" %}
+{% endblock %}
+
+{% block main-content %}
+<main class="app-main">
+  <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-6">
+      <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-header bg-primary text-white text-center">
+          <h4>Thêm Sản Phẩm</h4>
+        </div>
+        <div class="card-body p-4">
+          <form method="post">
+            {% csrf_token %}
+
+            <!-- Mã sản phẩm -->
+            <div class="mb-3">
+              <label for="id_maSP" class="form-label fw-semibold">Mã sản phẩm</label>
+              <input type="text" class="form-control input-hover" id="id_maSP" name="maSP" placeholder="Nhập mã sản phẩm">
+            </div>
+
+            <!-- Mã loại sp -->
+            <div class="mb-3">
+              <label for="id_maLoaiSP" class="form-label fw-semibold">Mã loại sản phẩm</label>
+              <input type="text" class="form-control input-hover" id="id_maLoaiSP" name="maLoaiSP" placeholder="Nhập mã loại sản phẩm">
+            </div>
+
+            <!-- Tên sản phẩm -->
+            <div class="mb-3">
+              <label for="id_tenSP" class="form-label fw-semibold">Tên sản phẩm</label>
+              <input type="text" class="form-control input-hover" id="id_tenSP" name="tenSP" placeholder="Nhập tên sản phẩm">
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="id_trongLuong" class="form-label fw-semibold">Trọng lượng</label>
+              <input type="number" class="form-control input-hover" id="id_trongLuong" name="trongLuong" placeholder="Nhập trọng lượng"> 
+            </div>
+
+            <!-- Điểm tích lũy -->
+            <div class="mb-3">
+              <label for="id_tienCong" class="form-label fw-semibold">Tiền công</label>
+              <input type="number" class="form-control input-hover" id="id_tienCong" name="tienCong" placeholder="Nhập tiền công">
+            </div>
+
+            <div class="mb-3">
+                <label for="id_tienDa" class="form-label fw-semibold">Tiền đá</label>
+                <input type="number" class="form-control input-hover" id="id_tienDa" name="tienDa" placeholder="Nhập tiền đá">
+              </div>
+
+
+            <div class="mb-3">
+                <label for="id_barcodeSP" class="form-label fw-semibold">Barcode sản phẩm</label>
+                <input type="number" class="form-control input-hover" id="id_barcodeSP" name="barcodeSP" placeholder="Nhập barcode sản phẩm">
+              </div>  
+
+
+
+
+            <!-- Nút Submit -->
+            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">➕ Thêm </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock main-content %}
+
+{% block left-menu %}
+{% include "includes/left-menu.html" %}
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer.html" %}
+{% endblock %}
+
+<!-- CSS Tùy Chỉnh -->
+<style>
+  .input-hover:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+  }
+</style>

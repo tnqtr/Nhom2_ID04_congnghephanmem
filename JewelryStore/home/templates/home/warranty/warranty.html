@@ -12,11 +12,11 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-6"><h3 class="mb-0">Bảo hành</h3></div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-end">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Bảo hành</li>
-          </ol>
+        <div class="col-sm-6 d-flex justify-content-end">
+          <a href="{% url 'add-warranty' %}" class="btn btn-success">
+            <i class="bi bi-plus-lg"></i> Thêm bảo hành
+          </a>
+          
         </div>
       </div>
     </div>

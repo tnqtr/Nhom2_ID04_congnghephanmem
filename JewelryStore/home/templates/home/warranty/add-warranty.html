@@ -1,0 +1,61 @@
+{% extends "home/master-page.html" %}
+{% load static %}
+
+{% block navbar %}
+{% include "includes/navbar.html" %}
+{% endblock %}
+
+{% block main-content %}
+<main class="app-main">
+  <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-6">
+      <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-header bg-primary text-white text-center">
+          <h4>Thêm Bảo Hành</h4>
+        </div>
+        <div class="card-body p-4">
+          <form method="post">
+            {% csrf_token %}
+
+            <!-- Mã sản phẩm -->
+            <div class="mb-3">
+              <label for="id_maBH" class="form-label fw-semibold">Mã bảo hành</label>
+              <input type="text" class="form-control input-hover" id="id_maBH" name="maBH" placeholder="Nhập mã bảo hành">
+            </div>
+
+            <!-- Mã loại sp -->
+            <div class="mb-3">
+              <label for="id_donHangLienKet" class="form-label fw-semibold">Đơn hàng liên kết</label>
+              <input type="text" class="form-control input-hover" id="id_donHangLienKet" name="donHangLienKet" placeholder="Nhập đơn hàng liên kết">
+            </div>
+
+            
+
+
+
+
+            <!-- Nút Submit -->
+            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">➕ Thêm </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock main-content %}
+
+{% block left-menu %}
+{% include "includes/left-menu.html" %}
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer.html" %}
+{% endblock %}
+
+<!-- CSS Tùy Chỉnh -->
+<style>
+  .input-hover:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+  }
+</style>

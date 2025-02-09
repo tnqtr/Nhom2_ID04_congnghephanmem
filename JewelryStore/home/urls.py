@@ -35,4 +35,7 @@ urlpatterns = [
     path("warranty/edit-warranty.html/<str:maBH>/", views.edit_warranty, name="edit-warranty"),
     path("warranty/delete-warranty/<str:maBH>/", views.delete_warranty, name="delete-warranty"),
     path("customers/add-customer.html", views.add_customer, name="add-customer"),
+    path("products/add-product.html", views.add_product, name="add-product"),
+    path("discounts/add-discount.html", views.add_discount, name="add-discount"),
+    path("warranty/add-warranty.html", views.add_warranty, name="add-warranty"),
 ]   
