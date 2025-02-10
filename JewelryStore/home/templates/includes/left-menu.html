@@ -3,7 +3,11 @@
     <!--begin::Sidebar Brand-->
     <div class="sidebar-brand">
       <!--begin::Brand Link-->
+      {% if user.is_staff %}
       <a href="{% url 'home' %}" class="brand-link">
+      {% else %}
+      <a href="{% url 'sell' %}" class="brand-link">
+      {% endif %}
         <!--begin::Brand Image-->
         <img
           src="{% static 'home/dist/assets/img/AdminLTELogo.png' %}"
