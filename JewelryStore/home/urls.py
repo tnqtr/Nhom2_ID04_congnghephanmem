@@ -38,6 +38,11 @@ urlpatterns = [
     path("products/add-product.html", views.add_product, name="add-product"),
     path("discounts/add-discount.html", views.add_discount, name="add-discount"),
     path("warranty/add-warranty.html", views.add_warranty, name="add-warranty"),
+<<<<<<< HEAD
     path("dashboard/management_dashboard.html", views.management_dashboard, name="management_dashboard"),  # Thêm URL pattern cho management_dashboard
     path("dashboard/staff_dashboard.html", views.staff_dashboard, name="staff_dashboard"),
 ]   
+=======
+    path("sell/sell.html", views.sell, name="sell"),
+]   
+>>>>>>> f7005d680e0becadc720f6c4689e1ab59111a0e9

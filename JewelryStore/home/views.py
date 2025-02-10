@@ -101,10 +101,30 @@ def delete_warranty(request, maBH):
         return redirect('warranty')
     return render(request, 'home/warranty/delete-warranty.html', {'baoHanh': baoHanh_obj})
 
+def add_warranty(request):
+    if request.method == 'POST':
+        form = BaoHanhForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('warranty')
+    else:
+        form = BaoHanhForm()
+    return render(request, 'home/warranty/add-warranty.html', {'form': form})
+
 # Discount App
 def chuongTrinhKhuyenMai_list(request):
     chuongTrinhKhuyenMais = chuongTrinhKhuyenMai.objects.all()
     return render(request, 'home/discounts/discount.html', {'chuongTrinhKhuyenMais': chuongTrinhKhuyenMais})
+
+def add_discount(request):
+    if request.method == 'POST':
+        form = ChuongTrinhKhuyenMaiForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('discounts')
+    else:
+        form = ChuongTrinhKhuyenMaiForm()
+    return render(request, 'home/discounts/add-discount.html', {'form': form})
 
 # Customer App
 def khachHang_list(request):
@@ -129,6 +149,16 @@ def delete_customer(request, maKH):
         khachHang_obj.delete()
         return redirect('customers')
     return render(request, 'home/customers/delete-customer.html', {'khachHang': khachHang_obj})
+
+def add_customer(request):
+    if request.method == 'POST':
+        form = KhachHangForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('customers')
+    else:
+        form = KhachHangForm()
+    return render(request, 'home/customers/add-customer.html', {'form': form})
 
 # Product App
 def sanPham_list(request):
@@ -172,15 +202,6 @@ def delete_discount(request, maKM):
         return redirect('discounts')
     return render(request, 'home/discounts/delete-discount.html', {'chuongTrinhKhuyenMai': chuongTrinhKhuyenMai_obj})
 
-def add_customer(request):
-    if request.method == 'POST':
-        form = KhachHangForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('customers')
-    else:
-        form = KhachHangForm()
-    return render(request, 'home/customers/add-customer.html', {'form': form})
 def add_product(request):
     if request.method == 'POST':
         form = SanPhamForm(request.POST)
@@ -191,22 +212,6 @@ def add_product(request):
         form = SanPhamForm()
     return render(request, 'home/products/add-product.html', {'form': form})
 
-def add_discount(request):
-    if request.method == 'POST':
-        form = ChuongTrinhKhuyenMaiForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('discounts')
-    else:
-        form = ChuongTrinhKhuyenMaiForm()
-    return render(request, 'home/discounts/add-discount.html', {'form': form})
-
-def add_warranty(request):
-    if request.method == 'POST':
-        form = BaoHanhForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('warranty')
-    else:
-        form = BaoHanhForm()
-    return render(request, 'home/warranty/add-warranty.html', {'form': form})
+# Sell App
+def sell(request):
+    return render(request, 'home/sell/sell.html')
