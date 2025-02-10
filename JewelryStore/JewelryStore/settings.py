@@ -118,6 +118,12 @@ USE_I18N = True
 USE_TZ = True
 
 
+LOGIN_URL = '/login/login/'
+LOGIN_REDIRECT_URL = '/home/'  # Điều hướng sau khi đăng nhập thành công
+LOGOUT_REDIRECT_URL = '/login/'  # Điều hướng sau khi đăng xuất
+
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 

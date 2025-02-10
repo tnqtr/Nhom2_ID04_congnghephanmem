@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from JS_Manage.models import nhanVien, bangGiaVang, sanPham, khachHang, hoaDon, hoaDonMuaLai, baoHanh, chuongTrinhKhuyenMai, loaiSP
-from .forms import KhachHangForm, SanPhamForm, ChuongTrinhKhuyenMaiForm, BaoHanhForm
+from .forms import KhachHangForm, SanPhamForm, ChuongTrinhKhuyenMaiForm, BaoHanhForm, LoginForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 # Create your views here.
+@login_required
 def home(request):
     return render(request, 'home/home.html')
 def income (request):
@@ -11,16 +15,47 @@ def staff (request):
     return render(request, 'home/dashboard/staff.html')
 def forms(request):
     return render(request, 'home/pages/forms/general.html')
-def lockscreen(request):
-    return render(request, 'home/pages/examples/lockscreen.html')
-def login(request):
-    return render(request, 'home/pages/examples/login.html')
-def register(request):
-    return render(request, 'home/pages/examples/register.html')
-def login_v2(request):
-    return render(request, 'home/pages/examples/login-v2.html')
-def register_v2(request):
-    return render(request, 'home/pages/examples/register-v2.html')
+
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                if user.is_staff:
+                    return redirect('staff_dashboard')  # Chuyển hướng đến trang quản lý
+                else:
+                    return redirect('management_dashboard')  # Chuyển hướng đến trang nhân viên
+            else:
+                form.add_error(None, 'Invalid username or password')
+    else:
+        form = LoginForm()
+    return render(request, 'home/pages/login/login.html', {'form': form})
+
+@login_required
+def management_dashboard(request):
+    return render(request, 'home/dashboard/management_dashboard.html')
+
+@login_required
+def staff_dashboard(request):
+    return render(request, 'home/dashboard/staff_dashboard.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+# def login(request):
+#     return render(request, 'home/pages/login/login.html')
+# def register(request):
+#     return render(request, 'home/pages/examples/register.html')
+# def login(request):
+#     return render(request, 'home/pages/login/login.html')
+# def register(request):
+#     return render(request, 'home/pages/login/register.html')
 def simple(request):    
     return render(request, 'home/pages/tables/simple.html')
 

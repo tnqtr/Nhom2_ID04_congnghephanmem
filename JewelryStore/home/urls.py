@@ -3,17 +3,17 @@ from django.urls import include, path
 from .import views
 from .views import nhanVien_list
 
+
 urlpatterns = [
     path("", views.home, name="home"),
     path("home.html", views.home, name="home"),
     path("income.html", views.income, name= "income"),
     path("staff.html", views.nhanVien_list, name= "staff"),
     path("forms/general.html", views.forms, name="forms"),
-    path("examples/lockscreen.html", views.lockscreen, name="lockscreen"),
-    path("examples/login.html", views.login, name="login"),
-    path("examples/register.html", views.register, name="register"),
-    path("examples/login-v2.html", views.login_v2, name="login-v2"),
-    path("examples/register-v2.html", views.register_v2, name="register-v2"),
+    path("logout/", views.logout_view, name="logout"),  # Cập nhật URL cho logout
+    path("login/", views.login_view, name="login"),
+    
+    # path("examples/register-v2.html", views.register_v2, name="register-v2"),
     path("tables/simple.html", views.simple, name="simple"),
     path("gold/gold-price.html", views.bangGiaVang_list, name="gold-price"),
     path("nhanViens/", views.nhanVien_list, name="nhanVien_list"),
@@ -38,4 +38,6 @@ urlpatterns = [
     path("products/add-product.html", views.add_product, name="add-product"),
     path("discounts/add-discount.html", views.add_discount, name="add-discount"),
     path("warranty/add-warranty.html", views.add_warranty, name="add-warranty"),
+    path("dashboard/management_dashboard.html", views.management_dashboard, name="management_dashboard"),  # Thêm URL pattern cho management_dashboard
+    path("dashboard/staff_dashboard.html", views.staff_dashboard, name="staff_dashboard"),
 ]   
