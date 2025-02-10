@@ -1,0 +1,97 @@
+{%extends "home/master-page.html"%}
+{% load static%}
+
+
+{% block navbar%}
+{% include "includes/navbar.html" %}
+{% endblock %}
+
+
+{% block main-content %}
+<main class="app-main">
+    <!--begin::App Content Header-->
+    <div class="app-content-header">
+      <!--begin::Container-->
+      <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+          <div class="col-sm-6"><h3 class="mb-0">Đơn hàng</h3></div>
+        </div>
+        <!--end::Row-->
+      </div>
+      <!--end::Container-->
+    </div>
+    <div class="app-content">
+      <!--begin::Container-->
+      <div class="container-fluid">
+        <!--begin::Row-->
+        <div class="row">
+            <div class="col-md-7 border-3 border-end">
+                <div class="card mb-4">
+                    <div class="card-header border-0 d-flex justify-content-between">
+                        <div class="col-md-5">
+                            <h3 class="card-title">Sản phẩm hiện có</h3>
+                        </div>
+                        <div class="input-group rounded">
+                            <input type="search" class="form-control rounded" placeholder="Tìm sản phẩm" aria-label="Search" aria-describedby="search-addon" />
+                            <span class="input-group-text border-0" id="search-addon">
+                            <i class="bi bi-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-striped align-middle">
+                            <thead>
+                            <tr>
+                                <th>Mã SP</th>
+                                <th>Tên SP</th>
+                                <th>Số lượng</th>
+                                <th>Đơn giá</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for sanPham in sanPhams %}
+                                <tr>
+                                <td>{{ sanPham.maSP }}</td>
+                                <td>{{ sanPham.tenSP }}</td>
+                                <td>{{ sanPham.trongLuong }}</td>
+                                <td>{{ sanPham.barcodeSP }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr><td colspan="4">Không có sản phẩm nào.</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-5">
+                <div class="card mb-4">
+                    <div class="card text-center card-header border-0">
+                        <strong class="fs-5 ">THÀNH TIỀN<strong>
+                    </div>
+                    <div class="card-body">
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!--end::Row-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::App Content-->
+</main>
+
+{% endblock main-content %}
+
+{% block left-menu%}
+{% include "includes/left-menu.html" %}
+{% endblock %}
+
+{% block footer%}
+{% include "includes/footer.html" %}
+{% endblock %}

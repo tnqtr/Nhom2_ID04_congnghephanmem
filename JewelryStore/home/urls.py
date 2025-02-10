@@ -38,4 +38,5 @@ urlpatterns = [
     path("products/add-product.html", views.add_product, name="add-product"),
     path("discounts/add-discount.html", views.add_discount, name="add-discount"),
     path("warranty/add-warranty.html", views.add_warranty, name="add-warranty"),
+    path("sell/sell.html", views.sell, name="sell"),
 ]   
