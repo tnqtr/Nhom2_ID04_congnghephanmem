@@ -16,12 +16,14 @@
         <!--begin::Row-->
         <div class="row">
           <div class="col-sm-6"><h3 class="mb-0">Sản Phẩm</h3></div>
+          {% if user.is_staff %}
           <div class="col-sm-6 d-flex justify-content-end">
             <a href="{% url 'add-product' %}" class="btn btn-success">
               <i class="bi bi-plus-lg"></i> Thêm sản phẩm
             </a>
             
           </div>
+          {% endif %}
         </div>
         <!--end::Row-->
       </div>
@@ -44,10 +46,7 @@
           <div class="card mb-4">
             <div class="card-header border-0">
               <h3 class="card-title">Sản phẩm hiện có</h3>
-              <div class="card-tools">
-                <a href="#" class="btn btn-tool btn-sm"> <i class="bi bi-download"></i> </a>
-                <a href="#" class="btn btn-tool btn-sm"> <i class="bi bi-list"></i> </a>
-              </div>
+              
             </div>
             <div class="card-body table-responsive p-0">
               <table class="table table-striped align-middle">
@@ -66,6 +65,7 @@
                       <td>{{ sanPham.tenSP }}</td>
                       <td>{{ sanPham.trongLuong }}</td>
                       <td>{{ sanPham.barcodeSP }}</td>
+                      {% if user.is_staff %}
                       <td>
                         <div class="dropdown">
                           <a href="#" class="text-secondary" data-bs-toggle="dropdown">
@@ -84,6 +84,7 @@
                           </div>
                         </div>
                       </td>
+                      {% endif %}
                     </tr>
                     {% empty %}
                    <tr><td colspan="4">Không có sản phẩm nào.</td></tr>

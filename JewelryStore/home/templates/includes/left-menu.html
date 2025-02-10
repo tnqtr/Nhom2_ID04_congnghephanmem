@@ -28,6 +28,7 @@
           role="menu"
           data-accordion="false"
         >
+        {% if user.is_staff %}
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon bi bi-graph-up-arrow"></i>
@@ -51,6 +52,7 @@
               </li>
             </ul>
           </li>
+          {% endif %}
 
           <li class="nav-item">
             <a href="{% url 'sell' %}" class="nav-link">
