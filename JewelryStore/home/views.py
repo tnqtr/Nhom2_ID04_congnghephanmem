@@ -26,10 +26,12 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                if user.is_staff:
-                    return redirect('staff_dashboard')  # Chuyển hướng đến trang quản lý
+                if user.is_superuser:
+                    return redirect('/admin/')  # Chuyển hướng đến trang admin của Django
+                elif user.is_staff:
+                    return redirect('management_dashboard')  # Chuyển hướng đến trang quản lý
                 else:
-                    return redirect('management_dashboard')  # Chuyển hướng đến trang nhân viên
+                    return redirect('staff_dashboard')  # Chuyển hướng đến trang nhân viên
             else:
                 form.add_error(None, 'Invalid username or password')
     else:
