@@ -133,3 +133,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY =["https://app.powerbi.com/reportEmbed?reportId=ce858e93-b90c-44ca-9c69-26315455b12b&autoAuth=true&embeddedDemo=true"]
+

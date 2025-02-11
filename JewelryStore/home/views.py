@@ -218,4 +218,10 @@ def add_product(request):
 
 # Sell App
 def sell(request):
-    return render(request, 'home/sell/sell.html')
+    query = request.GET.get('q')
+    if query:
+        sanPhams = sanPham.objects.filter(tenSP__icontains=query)
+    else:
+        sanPhams = sanPham.objects.all()
+    return render(request, 'home/sell/sell.html', {'sanPhams': sanPhams})
+    
