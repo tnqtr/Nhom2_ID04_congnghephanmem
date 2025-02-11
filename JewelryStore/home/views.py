@@ -216,4 +216,6 @@ def add_product(request):
 
 # Sell App
 def sell(request):
-    return render(request, 'home/sell/sell.html')
+    sanPhams = sanPham.objects.all()
+    return render(request, 'home/sell/sell.html', {'sanPhams': sanPhams})
+    
