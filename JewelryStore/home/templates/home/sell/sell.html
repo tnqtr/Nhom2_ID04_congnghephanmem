@@ -1,11 +1,10 @@
-{%extends "home/master-page.html"%}
-{% load static%}
+<!-- filepath: /c:/Users/ADMIN/Desktop/Baitapnhom2/Nhom2_ID04_congnghephanmem/JewelryStore/home/templates/home/sell/sell.html -->
+{% extends "home/master-page.html" %}
+{% load static %}
 
-
-{% block navbar%}
+{% block navbar %}
 {% include "includes/navbar.html" %}
 {% endblock %}
-
 
 {% block main-content %}
 <main class="app-main">
@@ -33,10 +32,12 @@
                             <h3 class="card-title">Sản phẩm hiện có</h3>
                         </div>
                         <div class="input-group rounded">
-                            <input type="search" class="form-control rounded" placeholder="Tìm sản phẩm" aria-label="Search" aria-describedby="search-addon" />
-                            <span class="input-group-text border-0" id="search-addon">
-                            <i class="bi bi-search"></i>
-                            </span>
+                            <form method="GET" action="{% url 'sell' %}">
+                                <input type="search" name="q" class="form-control rounded" placeholder="Tìm sản phẩm" aria-label="Search" aria-describedby="search-addon" />
+                                <button type="submit" class="input-group-text border-0" id="search-addon">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <div class="card-body table-responsive p-0">
@@ -45,8 +46,9 @@
                             <tr>
                                 <th>Mã SP</th>
                                 <th>Tên SP</th>
-                                <th>Số lượng</th>
-                                <th>Đơn giá</th>
+                                <th>Trọng lượng</th>
+                                <th>Barcode SP</th>
+                                <th>Chọn</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -56,9 +58,13 @@
                                 <td>{{ sanPham.tenSP }}</td>
                                 <td>{{ sanPham.trongLuong }}</td>
                                 <td>{{ sanPham.barcodeSP }}</td>
+                                <td>
+                                    <input type="number" name="quantity_{{ sanPham.maSP }}" min="1" value="1">
+                                    <button type="button" class="btn btn-primary add-to-order" data-id="{{ sanPham.maSP }}">Thêm</button>
+                                </td>
                                 </tr>
                                 {% empty %}
-                                <tr><td colspan="4">Không có sản phẩm nào.</td></tr>
+                                <tr><td colspan="5">Không có sản phẩm nào.</td></tr>
                                 {% endfor %}
                             </tbody>
                         </table>
@@ -81,9 +87,9 @@
                                     <p class="text-start">Chiết khấu: </p>
                                 </div>
                                 <div class="col-4">
-                                    <p class="text-end">{{ soLuong }}</p>
-                                    <p class="text-end">{{ thanhTien }}</p>
-                                    <p class="text-end">{{ chietKhau }}</p>
+                                    <p class="text-end" id="total-quantity">0</p>
+                                    <p class="text-end" id="total-price">0</p>
+                                    <p class="text-end" id="discount">0</p>
                                 </div>
                             </div>
                         </div>
@@ -100,12 +106,62 @@
     <!--end::App Content-->
 </main>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const addToOrderButtons = document.querySelectorAll('.add-to-order');
+        const totalQuantityElement = document.getElementById('total-quantity');
+        const totalPriceElement = document.getElementById('total-price');
+        const discountElement = document.getElementById('discount');
+
+        let totalQuantity = 0;
+        let totalPrice = 0;
+        let discount = 0;
+
+        addToOrderButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-id');
+                const quantityInput = document.querySelector(`input[name="quantity_${productId}"]`);
+                const quantity = parseInt(quantityInput.value);
+
+                // Fetch product details using AJAX
+                fetch(`/get-product-details/${productId}/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const productPrice = data.price;
+                        const productDiscount = data.discount;
+
+                        totalQuantity += quantity;
+                        totalPrice += productPrice * quantity;
+                        discount += productDiscount * quantity;
+
+                        totalQuantityElement.textContent = totalQuantity;
+                        totalPriceElement.textContent = totalPrice;
+                        discountElement.textContent = discount;
+
+                        // Gửi yêu cầu POST để thêm sản phẩm vào đơn hàng
+                        fetch('/add-to-order/', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': '{{ csrf_token }}'
+                            },
+                            body: JSON.stringify({
+                                product_id: productId,
+                                quantity: quantity
+                            })
+                        });
+                    });
+            });
+        });
+    });
+</script>
+
 {% endblock main-content %}
 
-{% block left-menu%}
+{% block left-menu %}
 {% include "includes/left-menu.html" %}
 {% endblock %}
 
-{% block footer%}
+{% block footer %}
 {% include "includes/footer.html" %}
 {% endblock %}
