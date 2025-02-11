@@ -189,6 +189,8 @@ def delete_product(request, maSP):
         return redirect('products')
     return render(request, 'home/products/delete-product.html', {'sanPham': sanPham_obj})
 
+
+
 def edit_discount(request, maKM):
     chuongTrinhKhuyenMai_obj = get_object_or_404(chuongTrinhKhuyenMai, maKM=maKM)
     if request.method == 'POST':
