@@ -16,12 +16,13 @@
         <!--begin::Row-->
         <div class="row">
           <div class="col-sm-6"><h3 class="mb-0">Chương Trình Khuyến Mãi</h3></div>
+          {% if user.is_staff %}
           <div class="col-sm-6 d-flex justify-content-end">
             <a href="{% url 'add-discount' %}" class="btn btn-success">
               <i class="bi bi-plus-lg"></i> Thêm chương trình khuyến mãi
-            </a>
-            
+            </a>            
           </div>
+          {% endif %}
         </div>
         <!--end::Row-->
       </div>
@@ -44,10 +45,7 @@
           <div class="card mb-4">
             <div class="card-header border-0">
               <h3 class="card-title">Khuyến mãi hiện hành</h3>
-              <div class="card-tools">
-                <a href="#" class="btn btn-tool btn-sm"> <i class="bi bi-download"></i> </a>
-                <a href="#" class="btn btn-tool btn-sm"> <i class="bi bi-list"></i> </a>
-              </div>
+              
             </div>
             <div class="card-body table-responsive p-0">
               <table class="table table-striped align-middle">
@@ -68,6 +66,7 @@
                       <td>{{ chuongTrinhKhuyenMai.ngayBatDau }}</td>
                       <td>{{ chuongTrinhKhuyenMai.ngayKetThuc }}</td>
                       <td>{{ chuongTrinhKhuyenMai.tyLeChietKhau }} %</td>
+                      {% if user.is_staff %}
                       <td>
                         <td>
                           <div class="dropdown">
@@ -89,6 +88,7 @@
                           </div>
                         </td>
                       </td>
+                      {% endif %}
                     </tr>
                     {% empty %}
                    <tr><td colspan="4">Không có chương trình khuyến mãi nào.</td></tr>
