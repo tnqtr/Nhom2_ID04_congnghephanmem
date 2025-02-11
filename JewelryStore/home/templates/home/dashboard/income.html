@@ -1,13 +1,11 @@
+{% extends "home/master-page.html" %}
+{% load static %}
 
-{%extends "home/master-page.html"%}
-{% load static%}
-
-
-{% block navbar%}
+{% block navbar %}
 {% include "includes/navbar.html" %}
 {% endblock %}
 
-{%block main-content%}
+{% block main-content %}
 <main class="app-main">
   <!--begin::App Content Header-->
   <div class="app-content-header">
@@ -159,16 +157,15 @@
       <!--begin::Row-->
       <div class="row">
         <!-- Start col -->
-        <div class="col-lg-7 connectedSortable">
+        <div class="col-lg-8 connectedSortable">
           <div class="card mb-4">
-            <div class="card-header"><h3 class="card-title">Sales Value</h3></div>
-            <div class="card-body"><div id="revenue-chart"></div></div>
+            <iframe title="ThongKeBanHang" width="100%" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=ce858e93-b90c-44ca-9c69-26315455b12b&autoAuth=true&embeddedDemo=true" frameborder="0" allowFullScreen="true"></iframe>
           </div>
           <!-- /.card -->
         </div>
         <!-- /.Start col -->
         <!-- Start col -->
-        <div class="col-lg-5 connectedSortable">
+        <div class="col-lg-4 connectedSortable">
           <div class="card mb-4">
             <div class="card-header border-0">
               <h3 class="card-title">Products</h3>
@@ -191,7 +188,7 @@
                   <tr>
                     <td>
                       <img
-                        src="{%static 'home/dist/assets/img/default-150x150.png' %}"
+                        src="{% static 'home/dist/assets/img/default-150x150.png' %}"
                         alt="Product 1"
                         class="rounded-circle img-size-32 me-2"
                       />
@@ -212,7 +209,7 @@
                   <tr>
                     <td>
                       <img
-                        src="{%static 'home/dist/assets/img/default-150x150.png' %}"
+                        src="{% static 'home/dist/assets/img/default-150x150.png' %}"
                         alt="Product 1"
                         class="rounded-circle img-size-32 me-2"
                       />
@@ -233,7 +230,7 @@
                   <tr>
                     <td>
                       <img
-                        src="{%static 'home/dist/assets/img/default-150x150.png' %}"
+                        src="{% static 'home/dist/assets/img/default-150x150.png' %}"
                         alt="Product 1"
                         class="rounded-circle img-size-32 me-2"
                       />
@@ -254,7 +251,7 @@
                   <tr>
                     <td>
                       <img
-                        src="{%static 'home/dist/assets/img/default-150x150.png' %}"
+                        src="{% static 'home/dist/assets/img/default-150x150.png' %}"
                         alt="Product 1"
                         class="rounded-circle img-size-32 me-2"
                       />
@@ -287,13 +284,12 @@
   </div>
   <!--end::App Content-->
 </main>
-{%endblock main-content%}
+{% endblock main-content %}
 
-{% block left-menu%}
+{% block left-menu %}
 {% include "includes/left-menu.html" %}
 {% endblock %}
 
-{% block footer%}
+{% block footer %}
 {% include "includes/footer.html" %}
 {% endblock %}
-
