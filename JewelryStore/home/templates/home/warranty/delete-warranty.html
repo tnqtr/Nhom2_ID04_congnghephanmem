@@ -27,8 +27,8 @@
           <p>Bạn có chắc chắn muốn xóa Sản phẩm {{ baoHanh.donHangLienKet }} ({{ baoHanh.maBH }}) không?</p>
           <form method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Xóa</button>
-            <a href="{% url 'waranty' %}" class="btn btn-secondary">Hủy</a>
+            <button name="delete_button" type="submit" class="btn btn-danger">Xóa</button>
+            <a href="{% url 'warranty' %}" class="btn btn-secondary">Hủy</a>
           </form>
         </div>
       </div>
