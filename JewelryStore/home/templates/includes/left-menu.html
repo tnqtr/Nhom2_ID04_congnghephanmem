@@ -3,11 +3,7 @@
     <!--begin::Sidebar Brand-->
     <div class="sidebar-brand">
       <!--begin::Brand Link-->
-      {% if user.is_staff %}
       <a href="{% url 'home' %}" class="brand-link">
-      {% else %}
-      <a href="{% url 'sell' %}" class="brand-link">
-      {% endif %}
         <!--begin::Brand Image-->
         <img
           src="{% static 'home/dist/assets/img/AdminLTELogo.png' %}"
@@ -32,7 +28,6 @@
           role="menu"
           data-accordion="false"
         >
-        {% if user.is_staff %}
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon bi bi-graph-up-arrow"></i>
@@ -56,11 +51,10 @@
               </li>
             </ul>
           </li>
-          {% endif %}
 
           <li class="nav-item">
             <a href="{% url 'sell' %}" class="nav-link">
-              <i class="nav-icon bi bi-cart4"></i>
+              <i class="nav-icon bi bi-bag"></i>
               <p>Đơn hàng</p>
             </a>
           </li>

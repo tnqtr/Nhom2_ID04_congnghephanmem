@@ -102,76 +102,22 @@ class chiTietDH (models.Model):
         return f"{self.maDH} {self.tenSP} {self.soLuong}"
 
 class bangGiaVang(models.Model):
-    ngayCapNhat = models.DateTimeField(auto_now=True)
+    ngayCapNhat = models.DateTimeField()
     loaiVang = models.CharField(max_length=100, default='Vàng 9999')
     giaMua = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)  # Thêm giá trị mặc định
     giaBan = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)  # Thêm giá trị mặc định
     donVi = models.CharField(max_length=10)
 
     def __str__(self):
-        return f"{self.loaiVang}  {self.ngayCapNhat}  {self.donVi}"
-    
-class chuongTrinhKhuyenMai (models.Model):
-    maKM = models.CharField(max_length=50, primary_key=True)
-    moTa = models.TextField()
-    ngayBatDau = models.DateField()
-    ngayKetThuc = models.DateField()
-    tyLeChietKhau = models.FloatField()
+        return f"{self.loaiVang} - {self.ngayCapNhat} - {self.donVi}"
+
+class bangThongKe (models.Model):
+    doanhThuNV = models.JSONField(default=dict)
+    doanhThuQL = models.JSONField(default=dict)
+    doanhThuQH = models.JSONField(default=dict)
+    tongDoanhThu = models.DecimalField(max_digits=10, decimal_places=2)
     def __str__(self):
-        return f"{self.maKM} {self.moTa} {self.tyLeChietKhau}"
-
-class bangThongKe(models.Model):
-    id = models.BigAutoField(primary_key=True)  # Thêm dòng này nếu cần
-
-    ngayCapNhat = models.DateTimeField(auto_now=True)
-    class Meta:
-        abstract = True  # Đánh dấu model này là abstract
-
-class thongKeMuaLaiHang(bangThongKe):
-    maSP = models.ForeignKey(sanPham, on_delete=models.CASCADE)
-    soLanMua = models.IntegerField()
-    tongSoLuong = models.IntegerField()
-    tongGiaTri = models.DecimalField(max_digits=18, decimal_places=2)
-    
-    def __str__(self):
-        return f"{self.maSP}  {self.soLanMua}"
-
-class thongKeKhuyenMai(bangThongKe):
-    maKM = models.ForeignKey(chuongTrinhKhuyenMai, on_delete=models.CASCADE)
-    soLuotSuDung = models.IntegerField()
-    tongGiaTriGiam = models.DecimalField(max_digits=18, decimal_places=2)
-    ngayBatDau = models.DateField()
-    ngayKetThuc = models.DateField()
-    
-    def __str__(self):
-        return f"{self.maKM}  {self.soLuotSuDung}"
-
-class thongKeHieuSuatBanHang(bangThongKe):
-    maNV = models.ForeignKey(nhanVien, on_delete=models.CASCADE)
-    soDonHang = models.IntegerField()
-    tongDoanhThu = models.DecimalField(max_digits=18, decimal_places=2)
-    tongSoLuong = models.IntegerField()
-    
-    def __str__(self):
-        return f"{self.maNV}  {self.soDonHang}"
-
-class thongKeDoanhThu(bangThongKe):
-    ngay = models.DateField()
-    tongDoanhThu = models.DecimalField(max_digits=18, decimal_places=2)
-    tongLoiNhuan = models.DecimalField(max_digits=18, decimal_places=2)
-    soDonHang = models.IntegerField()
-    
-    def __str__(self):
-        return f"{self.ngay}  Doanh thu: {self.tongDoanhThu}"
-
-class thongKeKhachHang(bangThongKe):
-    maKH = models.ForeignKey(khachHang, on_delete=models.CASCADE)
-    tongSoDon = models.IntegerField()
-    tongGiaTri = models.DecimalField(max_digits=18, decimal_places=2)
-    ngayMuaGanNhat = models.DateField()
-    
-    def __str__(self):
-        return f"{self.maKH}  {self.tongSoDon}"
+        return f"{self.doanhThuNV} {self.doanhThuQL} {self.doanhThuQH}"
 
 class baoHanh (models.Model):
     maBH = models.CharField(max_length=10, primary_key=True)
@@ -188,4 +134,12 @@ class chiTietBH (models.Model):
     def __str__(self):
         return f"{self.maBH} {self.ngayTao} {self.ngayKetThuc} {self.trangThai}"
 
+class chuongTrinhKhuyenMai (models.Model):
+    maKM = models.CharField(max_length=10, primary_key=True)
+    moTa = models.TextField()
+    ngayBatDau = models.DateField()
+    ngayKetThuc = models.DateField()
+    tyLeChietKhau = models.FloatField()
+    def __str__(self):
+        return f"{self.maKM} {self.moTa} {self.tyLeChietKhau}"
 

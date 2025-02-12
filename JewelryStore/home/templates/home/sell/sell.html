@@ -1,4 +1,3 @@
-<!-- filepath: /c:/Users/ADMIN/Desktop/Baitapnhom2/Nhom2_ID04_congnghephanmem/JewelryStore/home/templates/home/sell/sell.html -->
 {% extends "home/master-page.html" %}
 {% load static %}
 
@@ -93,7 +92,40 @@
                                 </div>
                             </div>
                         </div>
-                        </hr>
+                        <hr>
+                        <div class="container text-center">
+                            <div class="row justify-content-between">
+                                <div class="col-6">
+                                    <input type="text" id="promo-code" class="form-control" placeholder="Mã khuyến mãi">
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" id="loyalty-points" class="form-control" placeholder="Điểm tích lũy">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <button type="button" class="btn btn-success" id="apply-discount">Áp dụng khuyến mãi</button>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header border-0">
+                        <h3 class="card-title">Giỏ hàng</h3>
+                    </div>
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-striped align-middle">
+                            <thead>
+                            <tr>
+                                <th>Mã SP</th>
+                                <th>Tên SP</th>
+                                <th>Số lượng</th>
+                                <th>Giá</th>
+                                <th>Xóa</th>
+                            </tr>
+                            </thead>
+                            <tbody id="cart-items">
+                                <!-- Các sản phẩm trong giỏ hàng sẽ được thêm vào đây -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -106,55 +138,7 @@
     <!--end::App Content-->
 </main>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const addToOrderButtons = document.querySelectorAll('.add-to-order');
-        const totalQuantityElement = document.getElementById('total-quantity');
-        const totalPriceElement = document.getElementById('total-price');
-        const discountElement = document.getElementById('discount');
 
-        let totalQuantity = 0;
-        let totalPrice = 0;
-        let discount = 0;
-
-        addToOrderButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const productId = this.getAttribute('data-id');
-                const quantityInput = document.querySelector(`input[name="quantity_${productId}"]`);
-                const quantity = parseInt(quantityInput.value);
-
-                // Fetch product details using AJAX
-                fetch(`/get-product-details/${productId}/`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const productPrice = data.price;
-                        const productDiscount = data.discount;
-
-                        totalQuantity += quantity;
-                        totalPrice += productPrice * quantity;
-                        discount += productDiscount * quantity;
-
-                        totalQuantityElement.textContent = totalQuantity;
-                        totalPriceElement.textContent = totalPrice;
-                        discountElement.textContent = discount;
-
-                        // Gửi yêu cầu POST để thêm sản phẩm vào đơn hàng
-                        fetch('/add-to-order/', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRFToken': '{{ csrf_token }}'
-                            },
-                            body: JSON.stringify({
-                                product_id: productId,
-                                quantity: quantity
-                            })
-                        });
-                    });
-            });
-        });
-    });
-</script>
 
 {% endblock main-content %}
 

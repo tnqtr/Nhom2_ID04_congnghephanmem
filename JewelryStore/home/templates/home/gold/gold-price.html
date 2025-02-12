@@ -12,7 +12,12 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-6"><h3 class="mb-0">Giá Vàng</h3></div>
-        
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-end">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Giá Vàng</li>
+          </ol>
+        </div>
       </div>
     </div>
   </div>
@@ -50,7 +55,7 @@
                     <td>{{ bangGiaVang.giaBan }}</td>
                     <td>{{ bangGiaVang.donVi }}</td>
                     <td>{{ bangGiaVang.ngayCapNhat }}</td>
-                    
+                    <td><a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a></td>
                   </tr>
                   {% empty %}
                   <tr><td colspan="5">Chưa cập nhật giá vàng.</td></tr>

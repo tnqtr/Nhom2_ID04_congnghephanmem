@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import heThong, khachHang, quanLy, nhanVien, loaiSP, sanPham, quayHang, hoaDon, chiTietHD, donHang, chiTietDH, bangGiaVang, thongKeMuaLaiHang, thongKeKhuyenMai, thongKeHieuSuatBanHang, thongKeDoanhThu, thongKeKhachHang, baoHanh, chiTietBH, chuongTrinhKhuyenMai
+from .models import heThong, khachHang, quanLy, nhanVien, loaiSP, sanPham, quayHang, hoaDon, chiTietHD, donHang, chiTietDH, bangGiaVang, bangThongKe, baoHanh, chiTietBH, chuongTrinhKhuyenMai
 
 # Register your models here.
 class heThongAd(admin.ModelAdmin):
@@ -9,7 +9,7 @@ class khachHangAd(admin.ModelAdmin):
   list_display = ("hoTen", "maKH",)
 
 class quanLyAd(admin.ModelAdmin):
-  list_display = ("hoTen", "maQL", "quayHangPhuTrach")
+  list_display = ("hoTen", "maQL",)
 
 class nhanVienAd(admin.ModelAdmin):
   list_display = ("hoTen", "maNV","quayHangPhuTrach",)
@@ -38,17 +38,8 @@ class chiTietDHAd(admin.ModelAdmin):
 class bangGiaVangAd(admin.ModelAdmin):
   list_display = ("ngayCapNhat",)
 
-class thongKeMuaLaiHangAdmin(admin.ModelAdmin):
-    list_display = ("maSP", "soLanMua", "tongSoLuong", "tongGiaTri", "ngayCapNhat")
-
-class thongKeKhuyenMaiAdmin(admin.ModelAdmin):
-    list_display = ("maKM", "soLuotSuDung", "tongGiaTriGiam", "ngayBatDau", "ngayKetThuc", "ngayCapNhat")
-
-class thongKeDoanhThuAdmin(admin.ModelAdmin):
-    list_display = ("ngay", "tongDoanhThu", "tongLoiNhuan", "soDonHang", "ngayCapNhat")
-
-class thongKeKhachHangAdmin(admin.ModelAdmin):
-    list_display = ("maKH", "tongSoDon", "tongGiaTri", "ngayMuaGanNhat", "ngayCapNhat")
+class bangThongKeAd(admin.ModelAdmin):
+  list_display = ("doanhThuNV", "doanhThuQL", "doanhThuQH",)
 
 class baoHanhAd(admin.ModelAdmin):
   list_display = ("maBH",)
@@ -83,13 +74,7 @@ admin.site.register(chiTietDH,chiTietDHAd)
 
 admin.site.register(bangGiaVang,bangGiaVangAd)
 
-admin.site.register(thongKeMuaLaiHang, thongKeMuaLaiHangAdmin)
-
-admin.site.register(thongKeKhuyenMai, thongKeKhuyenMaiAdmin)
-
-admin.site.register(thongKeDoanhThu, thongKeDoanhThuAdmin)
-
-admin.site.register(thongKeKhachHang, thongKeKhachHangAdmin)
+admin.site.register(bangThongKe,bangThongKeAd)
 
 admin.site.register(baoHanh,baoHanhAd)
 
