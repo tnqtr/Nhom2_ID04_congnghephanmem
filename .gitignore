@@ -1,5 +1,20 @@
-# Bỏ qua thư mục __pycache__
-__pycache__/
+# Bỏ qua thư mục môi trường ảo
+venv/
+myenv/
+
+# Bỏ qua file biên dịch Python
 *.pyc
-# Bỏ qua file SQLite database
-*.sqlite3
+__pycache__/
+
+# Bỏ qua file cấu hình IDE
+.vscode/
+.idea/
+
+# Bỏ qua file chứa biến môi trường (mật khẩu, API keys)
+.env
+
+# Bỏ qua file database SQLite
+db.sqlite3
+
+# Bỏ qua các tệp log
+*.log
