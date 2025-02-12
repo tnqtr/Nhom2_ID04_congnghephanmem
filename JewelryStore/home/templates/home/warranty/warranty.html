@@ -12,12 +12,14 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-6"><h3 class="mb-0">Bảo hành</h3></div>
+        {% if user.is_staff %}
         <div class="col-sm-6 d-flex justify-content-end">
           <a href="{% url 'add-warranty' %}" class="btn btn-success">
             <i class="bi bi-plus-lg"></i> Thêm bảo hành
           </a>
           
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -49,6 +51,7 @@
                       {{ baoHanh.maBH }}
                     </td>
                     <td>{{ baoHanh.donHangLienKet }}</td>
+                    {% if user.is_staff %}
                     <td>
                       <div class="dropdown">
                         <a href="#" class="text-secondary" data-bs-toggle="dropdown">
@@ -67,6 +70,7 @@
                         </div>
                       </div>
                     </td>
+                    {% endif %}
                   </tr>
                   {% empty %}
                   <tr><td colspan="5">Chưa cập nhật bảo hành.</td></tr>
