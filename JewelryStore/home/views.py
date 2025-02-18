@@ -130,7 +130,11 @@ def add_discount(request):
 
 # Customer App
 def khachHang_list(request):
-    khachHangs = khachHang.objects.all()
+    query = request.GET.get('q')
+    if query:
+        khachHangs = khachHang.objects.filter(hoTen__icontains=query)
+    else:
+        khachHangs = khachHang.objects.all()
     return render(request, 'home/customers/customer.html', {'khachHangs': khachHangs})
 
 def edit_customer(request, maKH):
