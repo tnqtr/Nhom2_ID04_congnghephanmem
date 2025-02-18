@@ -168,7 +168,11 @@ def add_customer(request):
 
 # Product App
 def sanPham_list(request):
-    sanPhams = sanPham.objects.all()
+    query = request.GET.get('q')
+    if query:
+        sanPhams = sanPham.objects.filter(tenSP__icontains=query)
+    else:    
+        sanPhams = sanPham.objects.all()
     return render(request, 'home/products/product.html', {'sanPhams': sanPhams})
 
 def edit_product(request, maSP):

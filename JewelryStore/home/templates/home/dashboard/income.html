@@ -61,7 +61,7 @@
           <!--end::Small Box Widget 1-->
         </div>
         <!--end::Col-->
-        <div class="col-lg-3 col-6">
+        {% comment %} <div class="col-lg-3 col-6">
           <!--begin::Small Box Widget 2-->
           <div class="small-box text-bg-success">
             <div class="inner">
@@ -87,7 +87,7 @@
             </a>
           </div>
           <!--end::Small Box Widget 2-->
-        </div>
+        </div> {% endcomment %}
         <!--end::Col-->
         <div class="col-lg-3 col-6">
           <!--begin::Small Box Widget 3-->
@@ -157,122 +157,9 @@
       <!--begin::Row-->
       <div class="row">
         <!-- Start col -->
-        <div class="col-lg-8 connectedSortable">
+        <div class="col-lg-12 connectedSortable">
           <div class="card mb-4">
-            <iframe title="ThongKeBanHang" width="100%" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=ce858e93-b90c-44ca-9c69-26315455b12b&autoAuth=true&embeddedDemo=true" frameborder="0" allowFullScreen="true"></iframe>
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.Start col -->
-        <!-- Start col -->
-        <div class="col-lg-4 connectedSortable">
-          <div class="card mb-4">
-            <div class="card-header border-0">
-              <h3 class="card-title">Products</h3>
-              <div class="card-tools">
-                <a href="#" class="btn btn-tool btn-sm"> <i class="bi bi-download"></i> </a>
-                <a href="#" class="btn btn-tool btn-sm"> <i class="bi bi-list"></i> </a>
-              </div>
-            </div>
-            <div class="card-body table-responsive p-0">
-              <table class="table table-striped align-middle">
-                <thead>
-                  <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Sales</th>
-                    <th>More</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <img
-                        src="{% static 'home/dist/assets/img/default-150x150.png' %}"
-                        alt="Product 1"
-                        class="rounded-circle img-size-32 me-2"
-                      />
-                      Some Product
-                    </td>
-                    <td>$13 USD</td>
-                    <td>
-                      <small class="text-success me-1">
-                        <i class="bi bi-arrow-up"></i>
-                        12%
-                      </small>
-                      12,000 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img
-                        src="{% static 'home/dist/assets/img/default-150x150.png' %}"
-                        alt="Product 1"
-                        class="rounded-circle img-size-32 me-2"
-                      />
-                      Another Product
-                    </td>
-                    <td>$29 USD</td>
-                    <td>
-                      <small class="text-info me-1">
-                        <i class="bi bi-arrow-down"></i>
-                        0.5%
-                      </small>
-                      123,234 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img
-                        src="{% static 'home/dist/assets/img/default-150x150.png' %}"
-                        alt="Product 1"
-                        class="rounded-circle img-size-32 me-2"
-                      />
-                      Amazing Product
-                    </td>
-                    <td>$1,230 USD</td>
-                    <td>
-                      <small class="text-danger me-1">
-                        <i class="bi bi-arrow-down"></i>
-                        3%
-                      </small>
-                      198 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img
-                        src="{% static 'home/dist/assets/img/default-150x150.png' %}"
-                        alt="Product 1"
-                        class="rounded-circle img-size-32 me-2"
-                      />
-                      Perfect Item
-                      <span class="badge text-bg-danger">NEW</span>
-                    </td>
-                    <td>$199 USD</td>
-                    <td>
-                      <small class="text-success me-1">
-                        <i class="bi bi-arrow-up"></i>
-                        63%
-                      </small>
-                      87 Sold
-                    </td>
-                    <td>
-                      <a href="#" class="text-secondary"> <i class="bi bi-search"></i> </a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        <iframe title="ThongKeBanHang" width="100%" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=ce858e93-b90c-44ca-9c69-26315455b12b&autoAuth=true&embeddedDemo=true" frameborder="0" allowFullScreen="true"></iframe>
           </div>
           <!-- /.card -->
         </div>
