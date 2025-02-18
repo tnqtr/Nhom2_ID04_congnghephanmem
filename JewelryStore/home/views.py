@@ -232,4 +232,7 @@ def sell(request):
     else:
         sanPhams = sanPham.objects.all()
     return render(request, 'home/sell/sell.html', {'sanPhams': sanPhams})
+
+def add(value, arg):
+    return value + arg
     

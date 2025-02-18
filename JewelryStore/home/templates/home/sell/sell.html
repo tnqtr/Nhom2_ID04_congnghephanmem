@@ -27,15 +27,17 @@
             <div class="col-md-7 border-3 border-end">
                 <div class="card mb-4">
                     <div class="card-header border-0 d-flex justify-content-between">
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <h3 class="card-title">Sản phẩm hiện có</h3>
                         </div>
                         <div class="input-group rounded">
                             <form method="GET" action="{% url 'sell' %}">
-                                <input type="search" name="q" class="form-control rounded" placeholder="Tìm sản phẩm" aria-label="Search" aria-describedby="search-addon" />
-                                <button type="submit" class="input-group-text border-0" id="search-addon">
-                                    <i class="bi bi-search"></i>
-                                </button>
+                                <div class="input-group">                         
+                                    <input type="search" name="q" class="form-control rounded" placeholder="Tìm sản phẩm" aria-label="Search" aria-describedby="search-addon" />
+                                    <button type="submit" class="input-group-text border-0" id="search-addon">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -45,8 +47,8 @@
                             <tr>
                                 <th>Mã SP</th>
                                 <th>Tên SP</th>
-                                <th>Trọng lượng</th>
-                                <th>Barcode SP</th>
+                                <th>Số lượng</th>
+                                <th>Đơn giá</th>
                                 <th>Chọn</th>
                             </tr>
                             </thead>
@@ -55,10 +57,15 @@
                                 <tr>
                                 <td>{{ sanPham.maSP }}</td>
                                 <td>{{ sanPham.tenSP }}</td>
-                                <td>{{ sanPham.trongLuong }}</td>
-                                <td>{{ sanPham.barcodeSP }}</td>
                                 <td>
-                                    <input type="number" name="quantity_{{ sanPham.maSP }}" min="1" value="1">
+                                    <input type="number" name="quantity_{{ sanPham.maSP }}" min="0" value="0">
+                                </td>
+                                <td>
+                                    {% with total=sanPham.tienCong|add:sanPham.tienDa %}
+                                        <span id="total_{{ sanPham.maSP }}">{{ total }}</span>
+                                    {% endwith %}
+                                </td>
+                                <td>
                                     <button type="button" class="btn btn-primary add-to-order" data-id="{{ sanPham.maSP }}">Thêm</button>
                                 </td>
                                 </tr>
@@ -95,37 +102,32 @@
                         <hr>
                         <div class="container text-center">
                             <div class="row justify-content-between">
-                                <div class="col-6">
-                                    <input type="text" id="promo-code" class="form-control" placeholder="Mã khuyến mãi">
+                                <div class="col-5">
+                                    <input type="text" id="promo-code" class="form-control" placeholder="Mã KM">
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <input type="number" id="loyalty-points" class="form-control" placeholder="Điểm tích lũy">
                                 </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-success" id="apply-discount">Áp dụng</button>
                             </div>
                         </div>
                         <hr>
-                        <button type="button" class="btn btn-success" id="apply-discount">Áp dụng khuyến mãi</button>
-                    </div>
-                </div>
-                <div class="card mb-4">
-                    <div class="card-header border-0">
-                        <h3 class="card-title">Giỏ hàng</h3>
-                    </div>
-                    <div class="card-body table-responsive p-0">
-                        <table class="table table-striped align-middle">
-                            <thead>
-                            <tr>
-                                <th>Mã SP</th>
-                                <th>Tên SP</th>
-                                <th>Số lượng</th>
-                                <th>Giá</th>
-                                <th>Xóa</th>
-                            </tr>
-                            </thead>
-                            <tbody id="cart-items">
-                                <!-- Các sản phẩm trong giỏ hàng sẽ được thêm vào đây -->
-                            </tbody>
-                        </table>
+                        <div class="container text-center border-3">
+                            <div class="row justify-content-between">
+                                <div class="col-4">
+                                    <p class="text-start">Tổng tiền: </p>
+                                </div>
+                                <div class="col-4">
+                                    <p class="text-end" id="total">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-success btn-lg w-100" id="payment">Thanh toán</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -138,7 +140,50 @@
     <!--end::App Content-->
 </main>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('.add-to-order');
+        const quantityInputs = document.querySelectorAll('input[type="number"]');
+        const totalQuantityElement = document.getElementById('total-quantity');
+        const totalPriceElement = document.getElementById('total-price');
 
+        function updateTotalQuantityAndPrice() {
+            let totalQuantity = 0;
+            let totalPrice = 0;
+            quantityInputs.forEach(input => {
+                const quantity = parseInt(input.value) || 0;
+                if (quantity > 0) {
+                    totalQuantity += quantity;
+
+                    const productId = input.getAttribute('name').split('_')[1];
+                    const totalElement = document.querySelector(`#total_${productId}`);
+                    const total = parseFloat(totalElement.textContent) || 0;
+                    totalPrice += quantity * total;
+                }
+            });
+            totalQuantityElement.textContent = totalQuantity;
+            totalPriceElement.textContent = totalPrice.toFixed(2);
+        }
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-id');
+                const quantityInput = document.querySelector(`input[name="quantity_${productId}"]`);
+                if (quantityInput) {
+                    quantityInput.value = parseInt(quantityInput.value) + 1;
+                    updateTotalQuantityAndPrice();
+                }
+            });
+        });
+
+        quantityInputs.forEach(input => {
+            input.addEventListener('input', updateTotalQuantityAndPrice);
+        });
+
+        // Initialize total quantity and price on page load
+        updateTotalQuantityAndPrice();
+    });
+</script>
 
 {% endblock main-content %}
 
