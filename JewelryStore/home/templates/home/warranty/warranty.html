@@ -1,8 +1,7 @@
-
 {% extends "home/master-page.html" %}
 {% load static %}
 
-{% block navbar%}
+{% block navbar %}
 {% include "includes/navbar.html" %}
 {% endblock %}
 
@@ -17,7 +16,6 @@
           <a href="{% url 'add-warranty' %}" class="btn btn-success">
             <i class="bi bi-plus-lg"></i> Thêm bảo hành
           </a>
-          
         </div>
         {% endif %}
       </div>
@@ -37,6 +35,9 @@
                   <tr>
                     <th>Mã BH</th>
                     <th>Đơn hàng liên kết</th>
+                    {% if user.is_staff %}
+                    <th>Thao tác</th>
+                    {% endif %}
                   </tr>
                 </thead>
                 <tbody>
@@ -44,7 +45,7 @@
                   <tr>
                     <td>
                       <img
-                        src="{%static 'home/dist/assets/img/default-150x150.png' %}"
+                        src="{% static 'home/dist/assets/img/default-150x150.png' %}"
                         alt="Product 1"
                         class="rounded-circle img-size-32 me-2"
                       /> 
@@ -58,9 +59,7 @@
                           <i class="bi bi-three-dots-vertical"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
-                          <a class="dropdown-item" href="#">
-                            <i class="bi bi-search"></i> Xem
-                          </a>
+                          
                           <a class="dropdown-item" href="{% url 'edit-warranty' baoHanh.maBH %}">
                             <i class="bi bi-pencil-square"></i> Sửa
                           </a>
@@ -86,10 +85,10 @@
 </main>
 {% endblock main-content %}
 
-{% block left-menu%}
+{% block left-menu %}
 {% include "includes/left-menu.html" %}
 {% endblock %}
 
-{% block footer%}
+{% block footer %}
 {% include "includes/footer.html" %}
 {% endblock %}
