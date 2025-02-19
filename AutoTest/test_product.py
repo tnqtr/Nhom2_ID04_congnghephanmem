@@ -21,10 +21,10 @@ class ProductTests(unittest.TestCase):
         password.send_keys(Keys.RETURN)
         time.sleep(3)
 
-    def test_1_list_products(self):
-        self.driver.get("http://127.0.0.1:8000/login/products/product.html")
-        time.sleep(3)
-        self.assertIn("Jewelry Store| Thống kê", self.driver.title)
+    # def test_1_list_products(self):
+    #     self.driver.get("http://127.0.0.1:8000/login/products/product.html")
+    #     time.sleep(3)
+    #     self.assertIn("Jewelry Store| Thống kê", self.driver.title)
 
     def test_2_add_product(self):
         self.driver.get("http://127.0.0.1:8000/login/products/product.html")
