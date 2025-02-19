@@ -1,5 +1,5 @@
 from django import forms
-from JS_Manage.models import khachHang, sanPham, chuongTrinhKhuyenMai, baoHanh
+from JS_Manage.models import khachHang, sanPham, chuongTrinhKhuyenMai, baoHanh, hoaDon
 
 
 class LoginForm(forms.Form):
@@ -25,3 +25,8 @@ class BaoHanhForm(forms.ModelForm):
     class Meta:
         model = baoHanh
         fields = ['maBH', 'donHangLienKet']
+
+class HoaDonForm(forms.ModelForm):
+    class Meta:
+        model = hoaDon
+        fields = ['maHD', 'ngayTao', 'maKH', 'maNV', 'tongTien']

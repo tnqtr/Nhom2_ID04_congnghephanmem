@@ -1,0 +1,83 @@
+{% extends "home/master-page.html" %}
+{% load static %}
+
+{% block navbar %}
+{% include "includes/navbar.html" %}
+{% endblock %}
+
+{% block main-content %}
+<main class="app-main">
+  <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-6">
+      <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-header bg-primary text-white text-center">
+          <h4>Hóa đơn</h4>
+        </div>
+        <div class="card-body p-4">
+          <form method="post">
+            {% csrf_token %}
+
+            <!-- Mã hóa đơn -->
+            <div class="mb-3">
+              <label for="id_maHD" class="form-label fw-semibold">Mã hóa đơn</label>
+              <input type="text" class="form-control input-hover" id="id_maHD" name="maHD" placeholder="Nhập mã hóa đơn">
+            </div>
+
+            <!-- Ngày Tạo -->
+            <div class="mb-3">
+              <label for="id_ngayTao" class="form-label fw-semibold">Ngày tạo hóa đơn</label>
+              <input type="date" class="form-control input-hover" id="id_ngayTao" name="ngayTao">
+            </div>
+
+            <!-- Mã Khách hàng -->
+            <div class="mb-3">
+              <label for="id_maKH" class="form-label fw-semibold">Mã khách hàng</label>
+              <input type="text" class="form-control input-hover" id="id_maKH" name="maKH" placeholder="Nhập mã khách hàng">
+            </div>
+
+            <!-- Mã Nhân viên -->
+            <div class="mb-3">
+              <label for="id_maNV" class="form-label fw-semibold">Mã nhân viên</label>
+              <input type="text" class="form-control input-hover" id="id_maNV" name="maNV" placeholder="Nhập mã nhân viên"> 
+            </div>
+
+            <!-- Tổng tiền -->
+            <div class="mb-3">
+              <label for="id_tongTien" class="form-label fw-semibold">Tổng tiền</label>
+              <input type="number" class="form-control input-hover" id="id_tongTien" name="tongTien" readonly>
+            </div>
+
+            <!-- Nút Submit -->
+            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">In hóa đơn</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const total = localStorage.getItem('total');
+        if (total) {
+            document.getElementById('id_tongTien').value = total;
+        }
+    });
+</script>
+{% endblock main-content %}
+
+{% block left-menu %}
+{% include "includes/left-menu.html" %}
+{% endblock %}
+
+{% block footer %}
+{% include "includes/footer.html" %}
+{% endblock %}
+
+<!-- CSS Tùy Chỉnh -->
+<style>
+  .input-hover:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+  }
+</style>

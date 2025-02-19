@@ -42,5 +42,6 @@ urlpatterns = [
     path("dashboard/management_dashboard.html", views.management_dashboard, name="management_dashboard"),  # Thêm URL pattern cho management_dashboard
     path("dashboard/staff_dashboard.html", views.staff_dashboard, name="staff_dashboard"),
     path("sell/sell.html", views.sell, name="sell"),
+    path("sell/payment.html", views.payment, name="payment"),
 ]   
 

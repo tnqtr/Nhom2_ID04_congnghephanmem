@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from JS_Manage.models import nhanVien, bangGiaVang, sanPham, khachHang, hoaDon, hoaDonMuaLai, baoHanh, chuongTrinhKhuyenMai, loaiSP
-from .forms import KhachHangForm, SanPhamForm, ChuongTrinhKhuyenMaiForm, BaoHanhForm, LoginForm
+from .forms import KhachHangForm, SanPhamForm, ChuongTrinhKhuyenMaiForm, BaoHanhForm, LoginForm, HoaDonForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -126,6 +126,21 @@ def add_discount(request):
         form = ChuongTrinhKhuyenMaiForm()
     return render(request, 'home/discounts/add-discount.html', {'form': form})
 
+def edit_discount(request, maKM):
+    chuongTrinhKhuyenMai_obj = get_object_or_404(chuongTrinhKhuyenMai, maKM=maKM)
+    if request.method == 'POST':
+        chuongTrinhKhuyenMai_obj.moTa = request.POST.get('moTa')
+        chuongTrinhKhuyenMai_obj.tyLeChietKhau = request.POST.get('tyLeChietKhau')
+        chuongTrinhKhuyenMai_obj.save()
+        return redirect('discounts')
+    return render(request, 'home/discounts/edit-discount.html', {'chuongTrinhKhuyenMai': chuongTrinhKhuyenMai_obj})
+def delete_discount(request, maKM):
+    chuongTrinhKhuyenMai_obj = get_object_or_404(chuongTrinhKhuyenMai, maKM=maKM)
+    if request.method == 'POST':
+        chuongTrinhKhuyenMai_obj.delete()
+        return redirect('discounts')
+    return render(request, 'home/discounts/delete-discount.html', {'chuongTrinhKhuyenMai': chuongTrinhKhuyenMai_obj})
+
 # Customer App
 def khachHang_list(request):
     query = request.GET.get('q')
@@ -195,23 +210,6 @@ def delete_product(request, maSP):
         return redirect('products')
     return render(request, 'home/products/delete-product.html', {'sanPham': sanPham_obj})
 
-
-
-def edit_discount(request, maKM):
-    chuongTrinhKhuyenMai_obj = get_object_or_404(chuongTrinhKhuyenMai, maKM=maKM)
-    if request.method == 'POST':
-        chuongTrinhKhuyenMai_obj.moTa = request.POST.get('moTa')
-        chuongTrinhKhuyenMai_obj.tyLeChietKhau = request.POST.get('tyLeChietKhau')
-        chuongTrinhKhuyenMai_obj.save()
-        return redirect('discounts')
-    return render(request, 'home/discounts/edit-discount.html', {'chuongTrinhKhuyenMai': chuongTrinhKhuyenMai_obj})
-def delete_discount(request, maKM):
-    chuongTrinhKhuyenMai_obj = get_object_or_404(chuongTrinhKhuyenMai, maKM=maKM)
-    if request.method == 'POST':
-        chuongTrinhKhuyenMai_obj.delete()
-        return redirect('discounts')
-    return render(request, 'home/discounts/delete-discount.html', {'chuongTrinhKhuyenMai': chuongTrinhKhuyenMai_obj})
-
 def add_product(request):
     if request.method == 'POST':
         form = SanPhamForm(request.POST)
@@ -233,4 +231,13 @@ def sell(request):
 
 def add(value, arg):
     return value + arg
-    
+
+def payment(request):
+    if request.method == 'POST':
+        form = HoaDonForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('bill-sold') 
+    else:
+        form = HoaDonForm()
+    return render(request, 'home/sell/payment.html', {'form': form})
