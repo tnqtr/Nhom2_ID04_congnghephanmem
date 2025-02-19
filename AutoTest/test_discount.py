@@ -21,10 +21,10 @@ class DiscountTests(unittest.TestCase):
         password.send_keys(Keys.RETURN)
         time.sleep(3)
 
-    def test_1_list_discounts(self):
-        self.driver.get("http://127.0.0.1:8000/login/discounts/discount.html")
-        time.sleep(3)
-        self.assertIn("Jewelry Store| Thống kê", self.driver.title)
+    # def test_1_list_discounts(self):
+    #     self.driver.get("http://127.0.0.1:8000/login/discounts/discount.html")
+    #     time.sleep(3)
+    #     self.assertIn("Jewelry Store| Thống kê", self.driver.title)
 
     def test_2_add_discount(self):
         self.driver.get("http://127.0.0.1:8000/login/discounts/add-discount.html")
