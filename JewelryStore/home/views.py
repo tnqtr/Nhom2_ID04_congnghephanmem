@@ -237,7 +237,8 @@ def payment(request):
         form = HoaDonForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('bill-sold') 
+            hoaDons = hoaDon.objects.all()
+            return render(request, 'home/bill/bill-sold.html', {'hoaDons': hoaDons})
     else:
         form = HoaDonForm()
     return render(request, 'home/sell/payment.html', {'form': form})
